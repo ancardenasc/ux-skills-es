@@ -112,7 +112,8 @@ def main():
                                  stdin=subprocess.DEVNULL, env={**os.environ, "CI": "1"})
             output = re.sub(r"\x1b\[[0-9;?]*[a-zA-Z]", "", res.stdout + res.stderr)
             for i in ids:
-                n = len(re.findall(rf"(?<![\w-]){re.escape(i)}(?![\w-])", output))
+                # solo cuentan las líneas que listan el skill, no las menciones dentro de otras descripciones
+                n = len(re.findall(rf"(?m)^[│\s]+{re.escape(i)}\s*$", output))
                 if n != 1:
                     err(f"npx skills --list: {i} aparece {n} veces (esperado 1). "
                         f"Salida (código {res.returncode}):\n{output[-1500:]}")

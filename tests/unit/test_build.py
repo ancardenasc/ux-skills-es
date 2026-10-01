@@ -87,3 +87,9 @@ def test_case_kit_license_templates_carry_the_full_mit_text():
                        "LIABILITY, WHETHER IN AN ACTION OF CONTRACT"):
             assert clause in text, f"{lang}: falta la cláusula {clause!r}"
         assert len(text) > 1000
+
+
+def test_npx_listing_count_ignores_mentions_in_descriptions():
+    import re
+    output = "│    case-study-writer\n│\n│      Usa la estructura de case-kit para redactar.\n│\n│    case-kit\n│\n│      Crea carpetas.\n"
+    assert len(re.findall(r"(?m)^[│\s]+case-kit\s*$", output)) == 1
