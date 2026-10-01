@@ -1,3 +1,0 @@
-Archivos copiados desde shared/ por scripts/build.py. No editar a mano.
-- references/_shared/hello.en.md
-- references/_shared/hello.es.md

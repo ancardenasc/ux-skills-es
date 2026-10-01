@@ -1,0 +1,11 @@
+:root { --fondo: #ffffff; --texto: #1a1a1a; }
+body { margin: 0; font-family: system-ui, sans-serif; background: var(--fondo); color: var(--texto); }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 8px; top: 8px; background: #fff; }
+header, main { padding: 16px; }
+nav a { margin-right: 12px; }
+.banner { width: 100%; height: auto; }
+.nota { color: #999999; }
+a:focus { outline: none; }
+.btn { display: inline-block; padding: 10px 16px; background: #1b5e20; color: #ffffff; cursor: pointer; }
+.icono { width: 18px; height: 18px; padding: 0; border: 0; background: transparent; }

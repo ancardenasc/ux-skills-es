@@ -28,21 +28,28 @@ def test_build_is_idempotent():
     assert first == (tree_hash(ROOT / "skills"), tree_hash(ROOT / "plugins"))
 
 
-def test_vendored_file_matches_shared_plus_header():
+def test_vendored_markdown_matches_shared_plus_header():
     run("build.py")
-    vendored = (ROOT / "skills/hello-skill/references/_shared/hello.es.md").read_text()
-    original = (ROOT / "shared/references/hello.es.md").read_text()
+    vendored = (ROOT / "skills/wcag22-audit/references/_shared/report.es.md").read_text()
+    original = (ROOT / "shared/templates/report.es.md").read_text()
     assert vendored.startswith("<!-- GENERADO") and vendored.endswith(original)
+
+
+def test_vendored_json_is_a_byte_copy():
+    run("build.py")
+    vendored = ROOT / "skills/wcag22-audit/references/_shared/wcag22-criteria.json"
+    assert vendored.read_bytes() == (ROOT / "shared/data/wcag22-criteria.json").read_bytes()
 
 
 def test_plugin_copy_is_identical_to_flat_skill():
     run("build.py")
-    assert tree_hash(ROOT / "skills/hello-skill") == tree_hash(ROOT / "plugins/hello-skill/skills/hello-skill")
+    assert tree_hash(ROOT / "skills/wcag22-audit") == tree_hash(ROOT / "plugins/wcag22-audit/skills/wcag22-audit")
 
 
 def test_readme_not_shipped_with_skill():
     run("build.py")
-    assert not (ROOT / "skills/hello-skill/README.md").exists()
+    assert not (ROOT / "skills/wcag22-audit/README.md").exists()
+    assert (ROOT / "skills/wcag22-audit/examples/sample-report.es.md").exists()
 
 
 def test_forbidden_terms_regex():

@@ -1,0 +1,840 @@
+{
+  "_comment": "GENERADO por scripts/gen_wcag_data.py. Hechos de W3C; resúmenes y etiquetas propios.",
+  "wcag_version": "2.2",
+  "levels": [
+    "A",
+    "AA"
+  ],
+  "source": {
+    "url": "https://www.w3.org/WAI/WCAG22/wcag.json",
+    "retrieved_on": "2026-10-01",
+    "license_note": "Solo número, nombre, nivel y enlace de W3C; ningún texto de la especificación."
+  },
+  "criteria": [
+    {
+      "id": "1.1.1",
+      "name_en": "Non-text Content",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html",
+      "label_es": "Contenido no textual",
+      "summary_es": "Imágenes, iconos y controles sin texto necesitan una alternativa textual equivalente; lo decorativo debe ignorarse para las tecnologías de apoyo.",
+      "summary_en": "Images, icons and non-text controls need an equivalent text alternative; purely decorative content should be ignored by assistive technology.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.2.1",
+      "name_en": "Audio-only and Video-only (Prerecorded)",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html",
+      "label_es": "Solo audio o solo video grabado",
+      "summary_es": "Los medios grabados solo de audio o solo de video ofrecen una alternativa, como transcripción o descripción, que transmita lo mismo.",
+      "summary_en": "Prerecorded audio-only or video-only media provides an alternative, such as a transcript or description, conveying the same information.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.2.2",
+      "name_en": "Captions (Prerecorded)",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html",
+      "label_es": "Subtítulos de video grabado",
+      "summary_es": "El video grabado con audio incluye subtítulos sincronizados que reflejan los diálogos y los sonidos relevantes.",
+      "summary_en": "Prerecorded video with audio includes synchronized captions covering dialogue and meaningful sounds.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.2.3",
+      "name_en": "Audio Description or Media Alternative (Prerecorded)",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded.html",
+      "label_es": "Audiodescripción o alternativa",
+      "summary_es": "El video grabado ofrece una descripción de lo que ocurre en pantalla o una alternativa textual completa.",
+      "summary_en": "Prerecorded video offers a description of what happens on screen, or a full text alternative.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.2.4",
+      "name_en": "Captions (Live)",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/captions-live.html",
+      "label_es": "Subtítulos en vivo",
+      "summary_es": "Las transmisiones en vivo con audio ofrecen subtítulos en tiempo real.",
+      "summary_en": "Live audio content provides real-time captions.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.2.5",
+      "name_en": "Audio Description (Prerecorded)",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html",
+      "label_es": "Audiodescripción grabada",
+      "summary_es": "El video grabado incluye audiodescripción de la información visual que la banda sonora no cubre.",
+      "summary_en": "Prerecorded video includes audio description for visual information the soundtrack does not cover.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.3.1",
+      "name_en": "Info and Relationships",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html",
+      "label_es": "Información y relaciones",
+      "summary_es": "La estructura y las relaciones que se ven (títulos, listas, tablas, etiquetas) también están en el marcado, no solo en el estilo visual.",
+      "summary_en": "Structure and relationships shown visually (headings, lists, tables, labels) are also conveyed in markup, not by styling alone.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.3.2",
+      "name_en": "Meaningful Sequence",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html",
+      "label_es": "Secuencia con sentido",
+      "summary_es": "El orden del contenido en el código conserva el sentido cuando se lee de forma secuencial.",
+      "summary_en": "The reading order in the code preserves meaning when content is read sequentially.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.3.3",
+      "name_en": "Sensory Characteristics",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html",
+      "label_es": "Características sensoriales",
+      "summary_es": "Las instrucciones no dependen solo de forma, color, tamaño, ubicación o sonido para identificar un elemento.",
+      "summary_en": "Instructions do not rely only on shape, color, size, location or sound to identify an element.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.3.4",
+      "name_en": "Orientation",
+      "level": "AA",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/orientation.html",
+      "label_es": "Orientación",
+      "summary_es": "El contenido funciona en vertical y en horizontal, salvo que una orientación sea esencial.",
+      "summary_en": "Content works in both portrait and landscape unless one orientation is essential.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.3.5",
+      "name_en": "Identify Input Purpose",
+      "level": "AA",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html",
+      "label_es": "Propósito de los campos",
+      "summary_es": "Los campos que piden datos personales declaran su propósito, por ejemplo con autocomplete, para poder autocompletarse.",
+      "summary_en": "Fields collecting personal data declare their purpose, for example with autocomplete, so they can be filled automatically.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.4.1",
+      "name_en": "Use of Color",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+      "label_es": "Uso del color",
+      "summary_es": "El color no es la única forma de transmitir información, indicar una acción o distinguir elementos.",
+      "summary_en": "Color is not the only way to convey information, indicate an action or distinguish elements.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.4.2",
+      "name_en": "Audio Control",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html",
+      "label_es": "Control del audio",
+      "summary_es": "El audio que suena más de tres segundos se puede pausar, detener o bajar de volumen.",
+      "summary_en": "Audio that plays for more than three seconds can be paused, stopped or have its volume controlled.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.4.3",
+      "name_en": "Contrast (Minimum)",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "label_es": "Contraste mínimo del texto",
+      "summary_es": "El texto contrasta con su fondo al menos 4.5:1, o 3:1 si es grande.",
+      "summary_en": "Text contrasts with its background at least 4.5:1, or 3:1 for large text.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.4.4",
+      "name_en": "Resize Text",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html",
+      "label_es": "Cambio de tamaño del texto",
+      "summary_es": "El texto se puede ampliar hasta 200 % sin perder contenido ni funciones.",
+      "summary_en": "Text can be enlarged to 200% without losing content or functionality.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.4.5",
+      "name_en": "Images of Text",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html",
+      "label_es": "Imágenes de texto",
+      "summary_es": "Se usa texto real en lugar de imágenes de texto, salvo logotipos o casos esenciales.",
+      "summary_en": "Real text is used instead of images of text, except for logos or essential cases.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.4.10",
+      "name_en": "Reflow",
+      "level": "AA",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html",
+      "label_es": "Reflujo",
+      "summary_es": "El contenido se adapta a 320 píxeles de ancho sin scroll horizontal ni pérdida de información.",
+      "summary_en": "Content reflows at 320 CSS pixels wide without horizontal scrolling or loss of information.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.4.11",
+      "name_en": "Non-text Contrast",
+      "level": "AA",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "label_es": "Contraste de elementos no textuales",
+      "summary_es": "Los componentes de interfaz y los gráficos informativos contrastan al menos 3:1 con los colores contiguos.",
+      "summary_en": "UI components and informative graphics have at least 3:1 contrast against adjacent colors.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "1.4.12",
+      "name_en": "Text Spacing",
+      "level": "AA",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+      "label_es": "Espaciado del texto",
+      "summary_es": "Aumentar interlineado y espaciado del texto no provoca pérdida de contenido ni de funciones.",
+      "summary_en": "Increasing line, paragraph, letter and word spacing causes no loss of content or functionality.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "1.4.13",
+      "name_en": "Content on Hover or Focus",
+      "level": "AA",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html",
+      "label_es": "Contenido al pasar el cursor o enfocar",
+      "summary_es": "El contenido que aparece al pasar el cursor o enfocar se puede descartar, se mantiene visible y el puntero puede recorrerlo.",
+      "summary_en": "Content shown on hover or focus can be dismissed, stays visible while needed, and the pointer can move over it.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.1.1",
+      "name_en": "Keyboard",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html",
+      "label_es": "Teclado",
+      "summary_es": "Toda la funcionalidad se puede usar solo con el teclado.",
+      "summary_en": "All functionality is operable with a keyboard alone.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.1.2",
+      "name_en": "No Keyboard Trap",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html",
+      "label_es": "Sin trampas de teclado",
+      "summary_es": "El foco del teclado puede salir de cualquier componente usando el mismo teclado.",
+      "summary_en": "Keyboard focus can always leave a component using the keyboard.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.1.4",
+      "name_en": "Character Key Shortcuts",
+      "level": "A",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html",
+      "label_es": "Atajos de una tecla",
+      "summary_es": "Los atajos de una sola tecla se pueden desactivar, reasignar o solo actúan con el foco en el componente.",
+      "summary_en": "Single-character shortcuts can be turned off, remapped, or only work when the component has focus.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.2.1",
+      "name_en": "Timing Adjustable",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html",
+      "label_es": "Tiempo ajustable",
+      "summary_es": "Los límites de tiempo se pueden desactivar, ajustar o extender, salvo los esenciales.",
+      "summary_en": "Time limits can be turned off, adjusted or extended, unless essential.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.2.2",
+      "name_en": "Pause, Stop, Hide",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html",
+      "label_es": "Pausar",
+      "summary_es": "El contenido que se mueve, parpadea o se actualiza solo se puede pausar, detener u ocultar.",
+      "summary_en": "Moving, blinking or auto-updating content can be paused, stopped or hidden.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.3.1",
+      "name_en": "Three Flashes or Below Threshold",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html",
+      "label_es": "Tres destellos",
+      "summary_es": "Nada destella más de tres veces por segundo, salvo por debajo de los umbrales de destello.",
+      "summary_en": "Nothing flashes more than three times per second unless below the flash thresholds.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.4.1",
+      "name_en": "Bypass Blocks",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html",
+      "label_es": "Saltar bloques",
+      "summary_es": "Hay un mecanismo para saltar bloques repetidos, como un enlace de salto o puntos de referencia.",
+      "summary_en": "A mechanism lets users skip repeated blocks, such as a skip link or landmarks.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.4.2",
+      "name_en": "Page Titled",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html",
+      "label_es": "Título de la página",
+      "summary_es": "Cada página tiene un título que describe su tema o propósito.",
+      "summary_en": "Each page has a title describing its topic or purpose.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.4.3",
+      "name_en": "Focus Order",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html",
+      "label_es": "Orden del foco",
+      "summary_es": "El orden del foco con teclado conserva el sentido y la operabilidad.",
+      "summary_en": "Keyboard focus order preserves meaning and operability.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "2.4.4",
+      "name_en": "Link Purpose (In Context)",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+      "label_es": "Propósito del enlace",
+      "summary_es": "El propósito de cada enlace se entiende por su texto o por su contexto inmediato.",
+      "summary_en": "The purpose of each link can be understood from its text or its immediate context.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "2.4.5",
+      "name_en": "Multiple Ways",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways.html",
+      "label_es": "Varias vías",
+      "summary_es": "Hay más de una forma de llegar a una página dentro de un conjunto, salvo en pasos de un proceso.",
+      "summary_en": "More than one way exists to reach a page within a set, except process steps.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.4.6",
+      "name_en": "Headings and Labels",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html",
+      "label_es": "Títulos y etiquetas",
+      "summary_es": "Los títulos y las etiquetas describen el tema o la finalidad del contenido.",
+      "summary_en": "Headings and labels describe the topic or purpose of the content.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "2.4.7",
+      "name_en": "Focus Visible",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html",
+      "label_es": "Foco visible",
+      "summary_es": "El elemento con foco de teclado tiene un indicador visible.",
+      "summary_en": "The keyboard-focused element has a visible focus indicator.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "2.4.11",
+      "name_en": "Focus Not Obscured (Minimum)",
+      "level": "AA",
+      "since": "2.2",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html",
+      "label_es": "Foco no oculto",
+      "summary_es": "El elemento enfocado no queda totalmente tapado por contenido fijo como cabeceras, banners o diálogos.",
+      "summary_en": "A focused element is not entirely hidden by author-created content such as sticky headers, banners or dialogs.",
+      "assessable": {
+        "code": "no",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.5.1",
+      "name_en": "Pointer Gestures",
+      "level": "A",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html",
+      "label_es": "Gestos con el puntero",
+      "summary_es": "Los gestos de varios puntos o de trayectoria tienen una alternativa con un solo puntero.",
+      "summary_en": "Multipoint or path-based gestures have a single-pointer alternative.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.5.2",
+      "name_en": "Pointer Cancellation",
+      "level": "A",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html",
+      "label_es": "Cancelación del puntero",
+      "summary_es": "Las acciones con puntero se pueden cancelar, por ejemplo ejecutándose al soltar y no al presionar.",
+      "summary_en": "Pointer actions can be cancelled, for example by triggering on release rather than on press.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.5.3",
+      "name_en": "Label in Name",
+      "level": "A",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html",
+      "label_es": "Etiqueta en el nombre",
+      "summary_es": "El nombre accesible de un control contiene el texto visible de su etiqueta.",
+      "summary_en": "A control's accessible name contains its visible label text.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.5.4",
+      "name_en": "Motion Actuation",
+      "level": "A",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html",
+      "label_es": "Activación por movimiento",
+      "summary_es": "Las funciones activadas por el movimiento del dispositivo también se pueden usar desde la interfaz y desactivarse.",
+      "summary_en": "Functions triggered by device motion can also be used through the interface and can be disabled.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "2.5.7",
+      "name_en": "Dragging Movements",
+      "level": "AA",
+      "since": "2.2",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html",
+      "label_es": "Movimientos de arrastre",
+      "summary_es": "Toda acción de arrastrar tiene una alternativa con un solo puntero que no requiera arrastrar.",
+      "summary_en": "Any dragging action has a single-pointer alternative that does not require dragging.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "2.5.8",
+      "name_en": "Target Size (Minimum)",
+      "level": "AA",
+      "since": "2.2",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+      "label_es": "Tamaño del objetivo",
+      "summary_es": "Los objetivos del puntero miden al menos 24 por 24 píxeles CSS o tienen suficiente espacio a su alrededor.",
+      "summary_en": "Pointer targets are at least 24 by 24 CSS pixels, or have sufficient surrounding spacing.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "3.1.1",
+      "name_en": "Language of Page",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html",
+      "label_es": "Idioma de la página",
+      "summary_es": "El idioma principal de la página está declarado en el código.",
+      "summary_en": "The main language of the page is declared in the code.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "3.1.2",
+      "name_en": "Language of Parts",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html",
+      "label_es": "Idioma de las partes",
+      "summary_es": "Los pasajes en otro idioma se marcan con su idioma, salvo nombres propios y términos técnicos.",
+      "summary_en": "Passages in another language are marked with their language, except proper names and technical terms.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "3.2.1",
+      "name_en": "On Focus",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html",
+      "label_es": "Al recibir el foco",
+      "summary_es": "Recibir el foco no provoca por sí solo un cambio de contexto.",
+      "summary_en": "Receiving focus does not by itself trigger a change of context.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "3.2.2",
+      "name_en": "On Input",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/on-input.html",
+      "label_es": "Al introducir datos",
+      "summary_es": "Cambiar el valor de un control no provoca un cambio de contexto sin avisar antes.",
+      "summary_en": "Changing a control's value does not cause a change of context without prior warning.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "3.2.3",
+      "name_en": "Consistent Navigation",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html",
+      "label_es": "Navegación coherente",
+      "summary_es": "La navegación repetida aparece en el mismo orden relativo en todas las páginas.",
+      "summary_en": "Repeated navigation appears in the same relative order across pages.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.2.4",
+      "name_en": "Consistent Identification",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html",
+      "label_es": "Identificación coherente",
+      "summary_es": "Los componentes con la misma función se identifican de forma coherente en todo el sitio.",
+      "summary_en": "Components with the same function are identified consistently throughout.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.2.6",
+      "name_en": "Consistent Help",
+      "level": "A",
+      "since": "2.2",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html",
+      "label_es": "Ayuda coherente",
+      "summary_es": "Si hay ayuda o contacto, aparece en el mismo lugar relativo en las páginas donde se ofrece.",
+      "summary_en": "Where help or contact options are offered, they appear in the same relative place on each page.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.3.1",
+      "name_en": "Error Identification",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html",
+      "label_es": "Identificación de errores",
+      "summary_es": "Los errores de entrada se detectan automáticamente y se describen al usuario en texto.",
+      "summary_en": "Input errors are automatically detected and described to the user in text.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.3.2",
+      "name_en": "Labels or Instructions",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html",
+      "label_es": "Etiquetas o instrucciones",
+      "summary_es": "Los campos tienen etiquetas o instrucciones visibles cuando se pide una entrada al usuario.",
+      "summary_en": "Visible labels or instructions are provided when user input is required.",
+      "assessable": {
+        "code": "yes",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.3.3",
+      "name_en": "Error Suggestion",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html",
+      "label_es": "Sugerencia ante errores",
+      "summary_es": "Si se conoce la corrección de un error, se sugiere al usuario, salvo que comprometa la seguridad.",
+      "summary_en": "When a correction for an error is known, it is suggested to the user, unless it endangers security.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.3.4",
+      "name_en": "Error Prevention (Legal, Financial, Data)",
+      "level": "AA",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html",
+      "label_es": "Prevención de errores graves",
+      "summary_es": "Los envíos legales, financieros o de datos se pueden revisar, corregir o revertir.",
+      "summary_en": "Legal, financial or data submissions are reversible, checked or confirmable.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.3.7",
+      "name_en": "Redundant Entry",
+      "level": "A",
+      "since": "2.2",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html",
+      "label_es": "Entrada redundante",
+      "summary_es": "No se vuelve a pedir información ya dada en el mismo proceso, salvo que sea esencial.",
+      "summary_en": "Information already provided in the same process is not requested again, unless essential.",
+      "assessable": {
+        "code": "no",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "3.3.8",
+      "name_en": "Accessible Authentication (Minimum)",
+      "level": "AA",
+      "since": "2.2",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html",
+      "label_es": "Autenticación accesible",
+      "summary_es": "Autenticarse no exige una prueba cognitiva, como recordar o transcribir, salvo que haya alternativas o ayudas.",
+      "summary_en": "Authentication does not require a cognitive function test, such as remembering or transcribing, unless alternatives or aids exist.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    },
+    {
+      "id": "4.1.2",
+      "name_en": "Name, Role, Value",
+      "level": "A",
+      "since": "2.0",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+      "label_es": "Nombre",
+      "summary_es": "Todo componente expone nombre, rol y valor a las tecnologías de apoyo, y notifica sus cambios.",
+      "summary_en": "Every component exposes name, role and value to assistive technology, and changes are notified.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "no"
+      }
+    },
+    {
+      "id": "4.1.3",
+      "name_en": "Status Messages",
+      "level": "AA",
+      "since": "2.1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html",
+      "label_es": "Mensajes de estado",
+      "summary_es": "Los mensajes de estado se anuncian a las tecnologías de apoyo sin mover el foco.",
+      "summary_en": "Status messages are announced to assistive technology without moving focus.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "no"
+      }
+    }
+  ]
+}

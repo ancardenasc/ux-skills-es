@@ -1,3 +1,0 @@
-# Saludo
-
-Hola desde shared/.

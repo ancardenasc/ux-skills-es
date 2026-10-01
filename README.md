@@ -9,7 +9,7 @@ Skills de UX y accesibilidad en español para Claude Code y GitHub Copilot. Cada
 <!-- catalog:start -->
 | Skill | Qué hace | Instalar |
 |---|---|---|
-| [`hello-skill`](src/skills/hello-skill/README.md) | Skill de prueba que verifica el vendoring y el cierre de enlaces. | `/plugin install hello-skill@ux-skills-es` |
+| [`wcag22-audit`](src/skills/wcag22-audit/README.md) | Audita accesibilidad web contra WCAG 2.2 A y AA desde código, URL o diseño; informe en español con evidencia, prueba manual y brechas honestas. | `/plugin install wcag22-audit@ux-skills-es` |
 <!-- catalog:end -->
 
 ## Estado

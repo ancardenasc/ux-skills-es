@@ -9,18 +9,26 @@ marketplace:
 
 # Un plugin por skill. La versión vive solo aquí (se escribe en el manifiesto del plugin).
 plugins:
-  hello-skill:
+  wcag22-audit:
     version: 0.1.0
-    description: Skill de prueba de infraestructura (se elimina con el primer producto real).
+    description: Audita accesibilidad web contra WCAG 2.2 A y AA desde código, URL o diseño, con informe en español, evidencia y brechas honestas.
 
 # type: skill. id = nombre de carpeta en src/skills/.
 # vendor: archivos de shared/ que se copian dentro de cada skill (references/_shared/) para que
 # el skill sea autocontenido. {lang} se expande con langs.
 assets:
-  - id: hello-skill
+  - id: wcag22-audit
     type: skill
-    plugin: hello-skill
-    description: Skill de prueba que verifica el vendoring y el cierre de enlaces.
-    description_en: Infrastructure test skill that verifies vendoring and link closure.
+    plugin: wcag22-audit
+    description: Audita accesibilidad web contra WCAG 2.2 A y AA desde código, URL o diseño; informe en español con evidencia, prueba manual y brechas honestas.
+    description_en: Audits web accessibility against WCAG 2.2 A and AA from code, a URL or a design; Spanish-first report with evidence, manual checks and honest gaps.
     vendor:
-      - { src: "references/hello.{lang}.md", langs: [es, en] }
+      - { src: schema/report.schema.json }
+      - { src: "references/report-format.{lang}.md", langs: [es, en] }
+      - { src: "references/severity-and-confidence.{lang}.md", langs: [es, en] }
+      - { src: "references/input-modes.{lang}.md", langs: [es, en] }
+      - { src: "references/honest-gaps.{lang}.md", langs: [es, en] }
+      - { src: references/legal-copyright-rules.md }
+      - { src: data/wcag22-criteria.json }
+      - { src: "templates/report.{lang}.md", langs: [es, en] }
+      - { src: i18n/labels.yml }

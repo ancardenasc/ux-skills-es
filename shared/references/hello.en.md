@@ -1,3 +1,0 @@
-# Greeting
-
-Hello from shared/.

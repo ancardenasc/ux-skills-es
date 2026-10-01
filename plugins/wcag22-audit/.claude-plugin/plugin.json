@@ -1,0 +1,10 @@
+{
+  "name": "wcag22-audit",
+  "version": "0.1.0",
+  "description": "Audita accesibilidad web contra WCAG 2.2 A y AA desde código, URL o diseño, con informe en español, evidencia y brechas honestas.",
+  "author": {
+    "name": "Nicolas Cardenas",
+    "url": "https://github.com/ancardenasc"
+  },
+  "license": "MIT"
+}

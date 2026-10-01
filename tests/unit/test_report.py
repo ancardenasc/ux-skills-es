@@ -10,7 +10,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import check_wcag_data  # noqa: E402
 import validate_report  # noqa: E402
 
-SAMPLE = (ROOT / "tests/fixtures/sample-report.es.md").read_text(encoding="utf-8")
+EX = ROOT / "src/skills/wcag22-audit/examples"
+SAMPLE = (EX / "sample-report.es.md").read_text(encoding="utf-8")
 BLOCK = validate_report.BLOCK
 
 
@@ -21,6 +22,10 @@ def with_data(mutate):
     return BLOCK.sub(lambda m: "```json ux-skills-findings\n" + json.dumps(data, ensure_ascii=False) + "\n```", SAMPLE)
 
 
+def first(data, status):
+    return next(f for f in data["findings"] if f["status"] == status)
+
+
 def errors_of(text):
     return validate_report.validate_text(text)[0]
 
@@ -28,8 +33,8 @@ def errors_of(text):
 def test_sample_report_is_valid():
     errors, stats = validate_report.validate_text(SAMPLE)
     assert errors == []
-    assert stats["fail"] == 2 and stats["manual"] == 1 and stats["pass"] == 1
-    assert stats["coverage"] == 0.75
+    assert (stats["fail"], stats["manual"], stats["pass"], stats["not_tested"]) == (8, 1, 3, 1)
+    assert (stats["assessed"], stats["applicable"]) == (11, 13)
 
 
 def test_missing_section_marker_is_reported():
@@ -43,13 +48,13 @@ def test_missing_disclaimer_is_reported():
 
 def test_fail_without_evidence_is_rejected():
     def m(d):
-        d["findings"][0]["evidence"] = []
+        first(d, "fail")["evidence"] = []
     assert errors_of(with_data(m))
 
 
 def test_manual_without_manual_check_is_rejected():
     def m(d):
-        del d["findings"][2]["manual_check"]
+        del first(d, "manual")["manual_check"]
     assert errors_of(with_data(m))
 
 
@@ -61,26 +66,26 @@ def test_empty_honest_gaps_is_rejected():
 
 def test_confidence_above_method_cap_is_rejected():
     def m(d):
-        d["findings"][0]["confidence"] = "high"
+        first(d, "fail")["confidence"] = "high"
     assert any("techo" in e for e in errors_of(with_data(m)))
 
 
 def test_severity_on_pass_is_rejected():
     def m(d):
-        d["findings"][3]["severity"] = "minor"
+        first(d, "pass")["severity"] = "minor"
     assert any("solo se asigna" in e for e in errors_of(with_data(m)))
 
 
 def test_wrong_criterion_name_is_rejected():
     def m(d):
-        d["findings"][0]["criterion"]["name"] = "Contenido no textual"
+        first(d, "fail")["criterion"]["name"] = "Contenido no textual"
     assert any("no coincide" in e for e in errors_of(with_data(m)))
 
 
 def test_unknown_or_aaa_or_removed_criterion_is_rejected():
     for bad in ("4.1.1", "1.4.6", "9.9.9"):
         def m(d, bad=bad):
-            d["findings"][0]["criterion"]["id"] = bad
+            first(d, "fail")["criterion"]["id"] = bad
         assert errors_of(with_data(m)), bad
 
 
@@ -117,11 +122,11 @@ def test_every_section_marker_in_templates_matches_validator():
 
 
 def test_declared_coverage_must_match_computed():
-    bad = SAMPLE.replace("3 de 4 criterios aplicables", "4 de 4 criterios aplicables")
+    bad = SAMPLE.replace("11 de 13 criterios aplicables", "12 de 13 criterios aplicables")
     assert any("cobertura declarada" in e for e in errors_of(bad))
 
 
 def test_english_sample_is_valid():
-    text = (ROOT / "tests/fixtures/sample-report.en.md").read_text(encoding="utf-8")
+    text = (EX / "sample-report.en.md").read_text(encoding="utf-8")
     errors, stats = validate_report.validate_text(text)
-    assert errors == [] and stats["coverage"] == 1.0
+    assert errors == [] and (stats["assessed"], stats["applicable"]) == (11, 13)
