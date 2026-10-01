@@ -1,8 +1,15 @@
 name: release
 # Se dispara al subir una etiqueta <plugin>--vX.Y.Z (por ejemplo wcag22-audit--v0.1.0).
+# GitHub no dispara workflows si se suben más de 3 etiquetas a la vez: en ese caso, o para republicar,
+# ejecútalo a mano: gh workflow run release -f tag=<plugin>--vX.Y.Z
 on:
   push:
     tags: ["*--v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Etiqueta existente a publicar, por ejemplo wcag22-audit--v0.1.0"
+        required: true
 permissions:
   contents: write
 jobs:
@@ -10,17 +17,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
       - uses: actions/setup-python@v5
         with: { python-version: "3.13" }
       - run: pip install -r requirements.txt
       - name: Leer la etiqueta
         id: tag
+        env: { TAG: "${{ inputs.tag || github.ref_name }}" }
         run: |
           python - <<'PY' >> "$GITHUB_OUTPUT"
           import os, sys
           sys.path.insert(0, "scripts")
           from release_check import parse_tag
-          parsed = parse_tag(os.environ["GITHUB_REF_NAME"])
+          parsed = parse_tag(os.environ["TAG"])
           if not parsed:
               raise SystemExit("la etiqueta debe ser <plugin>--vX.Y.Z")
           print(f"plugin={parsed[0]}\nversion={parsed[1]}")
@@ -37,7 +47,9 @@ jobs:
       - name: Crear el zip del skill
         run: python scripts/make_zips.py --only "${{ steps.tag.outputs.plugin }}"
       - name: Publicar la Release con el zip
-        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          TAG: "${{ inputs.tag || github.ref_name }}"
         run: |
-          gh release create "$GITHUB_REF_NAME" "dist/zips/${{ steps.tag.outputs.plugin }}.zip" \
+          gh release create "$TAG" "dist/zips/${{ steps.tag.outputs.plugin }}.zip" \
             --title "${{ steps.tag.outputs.plugin }} ${{ steps.tag.outputs.version }}" --generate-notes
