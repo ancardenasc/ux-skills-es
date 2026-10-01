@@ -5,15 +5,27 @@ shared/<src> (vendor)       -> skills/<id>/references/_shared/<archivo>   (copia
 skills/<id>/                -> plugins/<plugin>/skills/<id>/              (mismos bytes, para el caché de Claude Code)
 catalog.yml                 -> plugins/<plugin>/.claude-plugin/plugin.json y .claude-plugin/marketplace.json
 
-README.md y CHANGELOG.md de cada skill son para humanos y no se incluyen en la salida.
+README.md y CHANGELOG.md de la raíz de cada skill son para humanos y no se incluyen en la salida (los de subcarpetas, como template/, sí).
 La versión va solo en el manifiesto del plugin, no en la entrada del marketplace.
 """
 import json
 import shutil
+from pathlib import Path
 
 from common import ROOT, load_catalog
 
-IGNORE = shutil.ignore_patterns("README.md", "CHANGELOG.md", "__pycache__", "*.pyc", ".DS_Store")
+HUMAN_ONLY = {"README.md", "CHANGELOG.md"}  # solo se omiten en la raíz del skill; dentro de template/ o references/ se conservan
+
+
+def make_ignore(skill_root):
+    def ignore(directory, names):
+        at_root = Path(directory) == skill_root
+        return [n for n in names
+                if (at_root and n in HUMAN_ONLY) or n in {"__pycache__", ".DS_Store"} or n.endswith(".pyc")]
+    return ignore
+
+
+
 HEADERS = {
     ".md": "<!-- GENERADO desde shared/{src} por scripts/build.py. No editar a mano. -->\n",
     ".yml": "# GENERADO desde shared/{src} por scripts/build.py. No editar a mano.\n",
@@ -70,7 +82,7 @@ def main():
         by_plugin.setdefault(asset["plugin"], []).append(asset)
         src = ROOT / "src" / "skills" / asset["id"]
         out = ROOT / "skills" / asset["id"]
-        shutil.copytree(src, out, ignore=IGNORE)
+        shutil.copytree(src, out, ignore=make_ignore(src))
         vendor(asset, out)
 
     for name, meta in cat["plugins"].items():

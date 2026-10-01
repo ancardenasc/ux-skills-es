@@ -17,6 +17,14 @@ plugins:
     version: 0.1.0
     description: Revisión heurística de usabilidad en español con las 10 heurísticas de Nielsen, con evidencia, verificación manual y brechas honestas.
 
+  case-kit:
+    version: 0.1.0
+    description: Genera la estructura de un caso de estudio de portafolio en 10 fases, en español o inglés.
+
+  case-study-writer:
+    version: 0.1.0
+    description: Redacta el caso de estudio de un proyecto (largo, de 60 segundos y blurb) desde sus documentos, sin inventar datos.
+
 # type: skill. id = nombre de carpeta en src/skills/.
 # vendor: archivos de shared/ que se copian dentro de cada skill (references/_shared/) para que
 # el skill sea autocontenido. {lang} se expande con langs.
@@ -51,3 +59,13 @@ assets:
       - { src: data/nielsen-heuristics.json }
       - { src: "templates/report.{lang}.md", langs: [es, en] }
       - { src: i18n/labels.yml }
+  - id: case-kit
+    type: skill
+    plugin: case-kit
+    description: Genera la estructura de un caso de estudio de portafolio en 10 fases (brief, investigación, PRD, diseño, pruebas, accesibilidad, caso), en español o inglés.
+    description_en: Scaffolds a 10-phase portfolio case-study structure (brief, research, PRD, design, testing, accessibility, case study), in Spanish or English.
+  - id: case-study-writer
+    type: skill
+    plugin: case-study-writer
+    description: Redacta el caso de estudio de un proyecto (completo, de 60 segundos y blurb) desde sus documentos y auditorías, sin inventar métricas, con citas y datos faltantes marcados.
+    description_en: Drafts a project case study (full, 60-second and blurb) from its documents and audits, without inventing metrics, with citations and missing data marked.

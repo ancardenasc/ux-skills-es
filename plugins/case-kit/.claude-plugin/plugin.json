@@ -1,0 +1,10 @@
+{
+  "name": "case-kit",
+  "version": "0.1.0",
+  "description": "Genera la estructura de un caso de estudio de portafolio en 10 fases, en español o inglés.",
+  "author": {
+    "name": "Nicolas Cardenas",
+    "url": "https://github.com/ancardenasc"
+  },
+  "license": "MIT"
+}

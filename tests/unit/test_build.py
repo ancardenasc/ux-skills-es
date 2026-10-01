@@ -62,3 +62,28 @@ def test_forbidden_terms_regex():
 def test_lint_passes_on_clean_repo():
     run("build.py")
     assert run("lint.py").returncode == 0
+
+
+def test_only_the_skill_root_readme_is_omitted():
+    run("build.py")
+    assert not (ROOT / "skills/heuristic-review-es/README.md").exists()
+    nested = ROOT / "src/skills/heuristic-review-es/references/_probe/README.md"
+    nested.parent.mkdir(exist_ok=True)
+    nested.write_text("# probe\n")
+    try:
+        run("build.py")
+        assert (ROOT / "skills/heuristic-review-es/references/_probe/README.md").exists()
+    finally:
+        nested.unlink()
+        nested.parent.rmdir()
+        run("build.py")
+
+
+def test_case_kit_license_templates_carry_the_full_mit_text():
+    for lang, placeholder in (("es", "[Año] [Tu nombre]"), ("en", "[Year] [Your Name]")):
+        text = (ROOT / f"src/skills/case-kit/template/{lang}/LICENSE").read_text(encoding="utf-8")
+        assert placeholder in text
+        for clause in ("Permission is hereby granted, free of charge", "THE SOFTWARE IS PROVIDED \"AS IS\"",
+                       "LIABILITY, WHETHER IN AN ACTION OF CONTRACT"):
+            assert clause in text, f"{lang}: falta la cláusula {clause!r}"
+        assert len(text) > 1000

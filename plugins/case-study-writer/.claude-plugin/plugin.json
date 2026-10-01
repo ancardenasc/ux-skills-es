@@ -1,0 +1,10 @@
+{
+  "name": "case-study-writer",
+  "version": "0.1.0",
+  "description": "Redacta el caso de estudio de un proyecto (largo, de 60 segundos y blurb) desde sus documentos, sin inventar datos.",
+  "author": {
+    "name": "Nicolas Cardenas",
+    "url": "https://github.com/ancardenasc"
+  },
+  "license": "MIT"
+}

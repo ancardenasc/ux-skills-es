@@ -14,6 +14,16 @@
       "name": "heuristic-review-es",
       "source": "./plugins/heuristic-review-es",
       "description": "Revisión heurística de usabilidad en español con las 10 heurísticas de Nielsen, con evidencia, verificación manual y brechas honestas."
+    },
+    {
+      "name": "case-kit",
+      "source": "./plugins/case-kit",
+      "description": "Genera la estructura de un caso de estudio de portafolio en 10 fases, en español o inglés."
+    },
+    {
+      "name": "case-study-writer",
+      "source": "./plugins/case-study-writer",
+      "description": "Redacta el caso de estudio de un proyecto (largo, de 60 segundos y blurb) desde sus documentos, sin inventar datos."
     }
   ]
 }

@@ -120,3 +120,53 @@ def test_compare_tool_accepts_the_sample_and_rejects_a_broken_one(skill, fixture
             f.pop("severity", None)
     broken = validate_report.BLOCK.sub(lambda m: "```json ux-skills-findings\n" + json.dumps(data) + "\n```", text)
     assert compare.compare(broken, expected(fixture))["missed"]
+
+
+# ---- case-study-writer: el ejemplo debe pasar el comprobador y el comprobador debe detectar violaciones ----
+import check_case_study  # noqa: E402
+
+CS_FIXTURE = ROOT / "tests/fixtures/case-aurora"
+CS_EXPECTED = yaml.safe_load((CS_FIXTURE / "expected.yml").read_text(encoding="utf-8"))
+CS_EXAMPLES = ROOT / "src/skills/case-study-writer/examples"
+
+
+@pytest.mark.parametrize("lang", LANGS)
+def test_case_study_examples_pass_the_checker(lang):
+    text = (CS_EXAMPLES / f"sample-output.{lang}.md").read_text(encoding="utf-8")
+    r = check_case_study.check(text, CS_FIXTURE, CS_EXPECTED, lang)
+    assert not check_case_study.hard_failures(r, CS_EXPECTED["min_citations"]), r
+    assert not r["unused_numbers"], r
+
+
+def mutate(lang, old, new):
+    text = (CS_EXAMPLES / f"sample-output.{lang}.md").read_text(encoding="utf-8")
+    assert old in text, old
+    return check_case_study.check(text.replace(old, new, 1), CS_FIXTURE, CS_EXPECTED, lang)
+
+
+def test_checker_detects_an_invented_figure():
+    for fake in ("91", "73", "88"):
+        r = mutate("es", "SUS de la v2 fue 72", f"SUS de la v2 fue {fake}")
+        assert fake in r["invented_numbers"], fake
+
+
+def test_checker_still_accepts_percentage_differences_and_steps():
+    r = check_case_study.check("+40 puntos porcentuales y de 20 en 20 puntos", CS_FIXTURE, CS_EXPECTED, "es")
+    assert r["invented_numbers"] == [] and set(r["derived_numbers"]) == {"20", "40"}
+
+
+def test_checker_detects_a_citation_to_a_missing_file():
+    r = mutate("es", "[fuente: docs/decisions/0001-boton-nativo.md]", "[fuente: docs/inventado.md]")
+    assert "docs/inventado.md" in r["bad_citations"]
+
+
+def test_checker_detects_private_data_leaking_from_raw_notes():
+    r = mutate("es", "Proyecto de muestra ficticio", "Laura Gómez, vecina de un conocido, y Acme Corp")
+    assert {"Laura", "Acme"} <= set(r["forbidden_found"])
+
+
+def test_checker_detects_a_filled_missing_result():
+    text = (CS_EXAMPLES / "sample-output.es.md").read_text(encoding="utf-8")
+    cleaned = text.replace("[DATO FALTANTE", "[Dato")
+    r = check_case_study.check(cleaned, CS_FIXTURE, CS_EXPECTED, "es")
+    assert r["missing_placeholders"]

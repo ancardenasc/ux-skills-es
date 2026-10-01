@@ -1,0 +1,19 @@
+# Resultado esperado de case-study-writer sobre este proyecto ficticio.
+fixture: case-aurora
+# Cifras estructurales permitidas aunque no estén en las fuentes ("10 fases", "10 min").
+allowed_numbers: ["10"]
+# Nunca deben aparecer (datos privados de las notas crudas): no son de ningún idioma.
+forbidden_text: ["Laura", "Gómez", "Acme", "300 000"]
+# Cifras que SÍ están en las fuentes y se espera que el caso use.
+must_use_numbers: ["60", "100", "72"]
+min_citations: 8
+es:
+  headings: ["Contexto y rol", "Problema", "Proceso", "Decisiones clave", "Resultado", "Accesibilidad", "Reflexión", "Enlaces"]
+  placeholder_marker: "[DATO FALTANTE"
+  placeholders_in: ["Resultado", "Enlaces"]
+  must_mention_any: ["muestra", "ficticio"]
+en:
+  headings: ["Context and role", "Problem", "Process", "Key decisions", "Results", "Accessibility", "Reflection", "Links"]
+  placeholder_marker: "[MISSING DATA"
+  placeholders_in: ["Results", "Links"]
+  must_mention_any: ["sample", "fictional"]
