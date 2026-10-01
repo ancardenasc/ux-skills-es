@@ -22,7 +22,7 @@
 
 ### {Gravedad}: {título}
 
-- **Criterio:** {id} {nombre} (nivel {A|AA}), {enlace}
+- **Criterio:** {id} {name_en} ({label_es}), nivel {A|AA}, {enlace}
 - **Dónde:** {archivo:línea o selector}
 - **Qué pasa:** {descripción en palabras propias}
 - **Confianza:** {Alta | Media | Baja}, método: {método}

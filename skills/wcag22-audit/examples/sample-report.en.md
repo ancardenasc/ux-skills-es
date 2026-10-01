@@ -21,7 +21,7 @@
 
 ### Critical: The subscribe button is a div with no role or keyboard support
 
-- **Criterion:** 4.1.2 Name, Role, Value (level A), https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+- **Criterion:** 4.1.2 Name, Role, Value, level A, https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
 - **Where:** `index.html:25`
 - **What happens:** A div with onclick is not announced as a button and cannot receive keyboard focus, so the form cannot be submitted without a mouse.
 - **Confidence:** Medium, method: static_code
@@ -30,7 +30,7 @@
 
 ### Critical: The subscribe button cannot be activated with a keyboard
 
-- **Criterion:** 2.1.1 Keyboard (level A), https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+- **Criterion:** 2.1.1 Keyboard, level A, https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
 - **Where:** `index.html:25`
 - **What happens:** The div with onclick has no tabindex or keyboard handler, so it cannot receive focus or respond to Enter or Space.
 - **Confidence:** Medium, method: static_code
@@ -39,7 +39,7 @@
 
 ### Serious: The note text has insufficient contrast
 
-- **Criterion:** 1.4.3 Contrast (Minimum) (level AA), https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+- **Criterion:** 1.4.3 Contrast (Minimum), level AA, https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 - **Where:** `styles.css:8`
 - **What happens:** Gray #999999 on the white background gives 2.85:1; normal text needs at least 4.5:1.
 - **Confidence:** Medium, method: static_code
@@ -48,7 +48,7 @@
 
 ### Serious: The email field has no label
 
-- **Criterion:** 3.3.2 Labels or Instructions (level A), https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html
+- **Criterion:** 3.3.2 Labels or Instructions, level A, https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html
 - **Where:** `index.html:22`
 - **What happens:** The placeholder disappears while typing and does not count as a label; the field has no label or aria-label.
 - **Confidence:** Medium, method: static_code
@@ -57,7 +57,7 @@
 
 ### Serious: The banner image has no text alternative
 
-- **Criterion:** 1.1.1 Non-text Content (level A), https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+- **Criterion:** 1.1.1 Non-text Content, level A, https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
 - **Where:** `index.html:18`
 - **What happens:** The banner image has no alt attribute, so a screen reader user cannot tell what it conveys.
 - **Confidence:** Medium, method: static_code
@@ -66,7 +66,7 @@
 
 ### Moderate: Links lose the focus indicator
 
-- **Criterion:** 2.4.7 Focus Visible (level AA), https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
+- **Criterion:** 2.4.7 Focus Visible, level AA, https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
 - **Where:** `styles.css:9`
 - **What happens:** The a:focus rule removes the outline and there is no replacement style.
 - **Confidence:** Medium, method: static_code
@@ -75,7 +75,7 @@
 
 ### Moderate: The close button is 18 by 18 pixels
 
-- **Criterion:** 2.5.8 Target Size (Minimum) (level AA), https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+- **Criterion:** 2.5.8 Target Size (Minimum), level AA, https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
 - **Where:** `styles.css:11`
 - **What happens:** The target is smaller than 24 by 24 CSS pixels and has no compensating space around it.
 - **Confidence:** Medium, method: static_code
@@ -84,7 +84,7 @@
 
 ### Moderate: The email field does not declare its purpose
 
-- **Criterion:** 1.3.5 Identify Input Purpose (level AA), https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html
+- **Criterion:** 1.3.5 Identify Input Purpose, level AA, https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html
 - **Where:** `index.html:22`
 - **What happens:** The field has no autocomplete, so the browser cannot fill in the person's email.
 - **Confidence:** Medium, method: static_code

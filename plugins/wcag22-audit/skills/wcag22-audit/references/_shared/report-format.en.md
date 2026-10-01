@@ -10,7 +10,7 @@ Every audit produces **one Markdown report** with the template sections (`report
 3. **Never declare "pass" what you cannot decide.** Anything that needs a screen reader, judging focus order without a runtime, or the quality of text alternatives goes to `manual`, with `manual_check`.
 4. **Statuses:** `fail`, `pass`, `manual`, `not_applicable` (the criterion cannot apply, e.g. there is no video) and `not_tested` (not looked at because the mode lacks the data; goes into the gaps).
 5. **Ids:** `WCAG-<criterion>-<NNN>` or `NIELSEN-<Hn>-<NNN>`, NNN consecutive. `dedup_key`: `<criterion>|<file:line or selector>`.
-6. **Labels per language** come from `labels.yml`. Machine keys and values in the JSON are always English.
+6. **Labels per language** come from `labels.yml`. Machine keys and values in the JSON are always English: in `criterion.name` copy `name_en` from `wcag22-criteria.json` **exactly** (for example `Keyboard`), never the Spanish label. The own label `label_es` is only shown in the Markdown, next to the id and the English name.
 7. **Fixed footer:** include the language's `disclaimer` label before the JSON block.
 8. **Honest gaps** is never empty (see `honest-gaps.en.md`). Coverage (assessed / applicable) is computed from the findings, not asserted.
 

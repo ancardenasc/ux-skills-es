@@ -70,7 +70,8 @@ def validate_text(text):
             else:
                 for field, key in (("name", "name_en"), ("level", "level"), ("url", "url")):
                     if crit.get(field) != ref[key]:
-                        errors.append(f"{fid}: {field} {crit.get(field)!r} no coincide con los datos ({ref[key]!r})")
+                        errors.append(f"{fid}: {field} {crit.get(field)!r} no coincide con los datos ({ref[key]!r}); "
+                                      "en el JSON copia name_en, level y url tal cual, sin traducir")
         elif crit.get("system") == "NIELSEN" and nielsen:
             ref = nielsen.get(crit.get("id"))
             if not ref or crit.get("name") != ref["name_en"]:

@@ -21,7 +21,7 @@
 
 ### Crítico: El botón de suscripción es un div sin rol ni teclado
 
-- **Criterio:** 4.1.2 Name, Role, Value (nivel A), https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+- **Criterio:** 4.1.2 Name, Role, Value (Nombre), nivel A, https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
 - **Dónde:** `index.html:25`
 - **Qué pasa:** Un div con onclick no se anuncia como botón y no recibe foco del teclado, así que el formulario no se puede enviar sin ratón.
 - **Confianza:** Media, método: static_code
@@ -30,7 +30,7 @@
 
 ### Crítico: El botón de suscripción no se puede activar con teclado
 
-- **Criterio:** 2.1.1 Keyboard (nivel A), https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+- **Criterio:** 2.1.1 Keyboard (Teclado), nivel A, https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
 - **Dónde:** `index.html:25`
 - **Qué pasa:** El div con onclick no tiene tabindex ni manejador de teclado, así que no recibe foco ni responde a Enter o Espacio.
 - **Confianza:** Media, método: static_code
@@ -39,7 +39,7 @@
 
 ### Grave: El texto de la nota tiene contraste insuficiente
 
-- **Criterio:** 1.4.3 Contrast (Minimum) (nivel AA), https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+- **Criterio:** 1.4.3 Contrast (Minimum) (Contraste mínimo del texto), nivel AA, https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 - **Dónde:** `styles.css:8`
 - **Qué pasa:** El gris #999999 sobre el fondo blanco da 2.85:1; el texto normal necesita al menos 4.5:1.
 - **Confianza:** Media, método: static_code
@@ -48,7 +48,7 @@
 
 ### Grave: El campo de correo no tiene etiqueta
 
-- **Criterio:** 3.3.2 Labels or Instructions (nivel A), https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html
+- **Criterio:** 3.3.2 Labels or Instructions (Etiquetas o instrucciones), nivel A, https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html
 - **Dónde:** `index.html:22`
 - **Qué pasa:** El placeholder desaparece al escribir y no cuenta como etiqueta; el campo no tiene label ni aria-label.
 - **Confianza:** Media, método: static_code
@@ -57,7 +57,7 @@
 
 ### Grave: La imagen del banner no tiene alternativa textual
 
-- **Criterio:** 1.1.1 Non-text Content (nivel A), https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+- **Criterio:** 1.1.1 Non-text Content (Contenido no textual), nivel A, https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
 - **Dónde:** `index.html:18`
 - **Qué pasa:** La imagen del banner carece de atributo alt, así que una persona con lector de pantalla no sabe qué comunica.
 - **Confianza:** Media, método: static_code
@@ -66,7 +66,7 @@
 
 ### Moderado: Los enlaces pierden el indicador de foco
 
-- **Criterio:** 2.4.7 Focus Visible (nivel AA), https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
+- **Criterio:** 2.4.7 Focus Visible (Foco visible), nivel AA, https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
 - **Dónde:** `styles.css:9`
 - **Qué pasa:** La regla a:focus quita el contorno y no hay un estilo de reemplazo.
 - **Confianza:** Media, método: static_code
@@ -75,7 +75,7 @@
 
 ### Moderado: El botón de cerrar mide 18 por 18 píxeles
 
-- **Criterio:** 2.5.8 Target Size (Minimum) (nivel AA), https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+- **Criterio:** 2.5.8 Target Size (Minimum) (Tamaño del objetivo), nivel AA, https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
 - **Dónde:** `styles.css:11`
 - **Qué pasa:** El objetivo mide menos de 24 por 24 píxeles CSS y no tiene espacio compensatorio a su alrededor.
 - **Confianza:** Media, método: static_code
@@ -84,7 +84,7 @@
 
 ### Moderado: El campo de correo no declara su propósito
 
-- **Criterio:** 1.3.5 Identify Input Purpose (nivel AA), https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html
+- **Criterio:** 1.3.5 Identify Input Purpose (Propósito de los campos), nivel AA, https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html
 - **Dónde:** `index.html:22`
 - **Qué pasa:** El campo no tiene autocomplete, así que el navegador no puede rellenar el correo de la persona.
 - **Confianza:** Media, método: static_code

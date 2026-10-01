@@ -9,7 +9,7 @@ Cada auditoría produce **un informe en Markdown** con las secciones de la plant
 3. **Nunca declares "pasa" lo que no puedes decidir.** Lo que exige lector de pantalla, juicio sobre el orden del foco sin runtime o calidad de textos alternativos va a `manual`, con `manual_check`.
 4. **Estados:** `fail`, `pass`, `manual`, `not_applicable` (el criterio no puede aplicar, por ejemplo no hay video) y `not_tested` (no se miró porque el modo no tiene el dato; va a las brechas).
 5. **Ids:** `WCAG-<criterio>-<NNN>` o `NIELSEN-<Hn>-<NNN>`, con NNN consecutivo. `dedup_key`: `<criterio>|<archivo:línea o selector>`.
-6. **Etiquetas por idioma** salen de `labels.yml`. Las claves y valores máquina del JSON van siempre en inglés.
+6. **Etiquetas por idioma** salen de `labels.yml`. Las claves y valores máquina del JSON van siempre en inglés: en `criterion.name` copia **exactamente** `name_en` de `wcag22-criteria.json` (por ejemplo `Keyboard`), nunca la etiqueta en español. La etiqueta propia `label_es` solo se muestra en el Markdown, junto al id y al nombre en inglés.
 7. **Pie fijo:** incluye la etiqueta `disclaimer` del idioma antes del bloque JSON.
 8. **Brechas honestas** nunca va vacía (ver `honest-gaps.es.md`). La cobertura (evaluados / aplicables) se calcula desde los hallazgos, no se afirma.
 

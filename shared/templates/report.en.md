@@ -21,7 +21,7 @@
 
 ### {Severity}: {title}
 
-- **Criterion:** {id} {name} (level {A|AA}), {link}
+- **Criterion:** {id} {name_en}, level {A|AA}, {link}
 - **Where:** {file:line or selector}
 - **What happens:** {description in your own words}
 - **Confidence:** {High | Medium | Low}, method: {method}

@@ -55,13 +55,13 @@ Recorre los criterios A y AA por principio (Perceptible, Operable, Comprensible,
 
 ### 5. Escribe el informe
 
-Usa la plantilla del idioma: siete secciones con sus marcadores `<!-- section:id -->`, el pie legal y, al final, un único bloque `json ux-skills-findings` que valida contra el esquema. El Markdown y el JSON deben decir lo mismo. La cobertura (evaluados / aplicables) se calcula contando los hallazgos; no la estimes. Describe cada criterio con palabras propias.
+Usa la plantilla del idioma: siete secciones con sus marcadores `<!-- section:id -->`, el pie legal y, al final, un único bloque `json ux-skills-findings` que valida contra el esquema. El Markdown y el JSON deben decir lo mismo. La cobertura (evaluados / aplicables) se calcula contando los hallazgos; no la estimes. Describe cada criterio con palabras propias. **En el JSON, `criterion.name` es siempre el `name_en` exacto del archivo de datos** (p. ej. `Keyboard`); en el Markdown en español escribe `id name_en (label_es)`, por ejemplo `2.1.1 Keyboard (Teclado)`.
 
 ### 6. Autoverificación antes de entregar
 
 - [ ] Hay exactamente un bloque JSON y es válido según el esquema.
 - [ ] Todo `fail` tiene evidencia real (nada inventado) y recomendación.
-- [ ] Nombre, nivel y enlace de cada criterio salen del JSON de datos, sin retocar.
+- [ ] En el JSON, `name`, `level` y `url` de cada criterio son los del archivo de datos, copiados sin traducir ni retocar (nombre en inglés).
 - [ ] La gravedad solo está en los `fail`; la confianza respeta el techo del método.
 - [ ] Todo lo que no pudiste decidir está en `manual` o `not_tested`, nunca en `pass`.
 - [ ] Las brechas honestas no están vacías y la cobertura coincide con el conteo.

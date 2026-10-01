@@ -97,7 +97,7 @@ def build(lang):
     for f in fails:
         c=f["criterion"]; e=f["evidence"][0]
         o+= [f"### {L['severity'][f['severity']]}: {f['title']}\n",
-             f"- **{'Criterio' if es else 'Criterion'}:** {c['id']} {c['name']} ({'nivel' if es else 'level'} {c['level']}), {c['url']}",
+             f"- **{'Criterio' if es else 'Criterion'}:** {c['id']} {c['name']}" + (f" ({crit[c['id']]['label_es']}), nivel {c['level']}, {c['url']}" if es else f", level {c['level']}, {c['url']}"),
              f"- **{'Dónde' if es else 'Where'}:** `{e['file']}:{e['line']}`",
              f"- **{'Qué pasa' if es else 'What happens'}:** {f['description']}",
              f"- **{'Confianza' if es else 'Confidence'}:** {L['confidence'][f['confidence']]}, {'método' if es else 'method'}: {f['method']}",
