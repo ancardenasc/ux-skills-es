@@ -13,6 +13,8 @@ Each skill installs on its own. Pick the route your tool uses.
 | **claude.ai** | upload the `<id>.zip` from the Releases page | |
 | **Claude Code without plugins** | copy the folder to `.claude/skills/` | `scripts/install.sh claude /path/to/your/project` |
 
+**Pin a version:** tags are per skill (`<id>--vX.Y.Z`), so spell it out: `gh skill install ancardenasc/ux-skills-es wcag22-audit@wcag22-audit--v0.1.0`. Without a version, `gh skill` uses the latest tag of the repository, which may belong to another skill (the content is the same while they share a commit).
+
 Claude Code plugins are invoked with their namespace: `/wcag22-audit:wcag22-audit`. If you copy the files into `.claude/skills/`, the name is short: `/wcag22-audit`.
 
 ## 2. Your first audit
