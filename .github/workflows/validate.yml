@@ -1,0 +1,29 @@
+name: validate
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "${{ matrix.python }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: pip install -r requirements.txt
+      - name: Salida generada al día
+        run: |
+          python scripts/build.py
+          python scripts/gen_readme.py
+          git diff --exit-code
+      - run: python scripts/lint.py
+      - run: python -m pytest tests/unit -q
+      - name: Smoke test de instalación (incluye npx skills)
+        run: python scripts/smoke_install.py
+        env: { SMOKE_NPX: "1" }
+      - name: Escaneo de secretos
+        if: matrix.python == '3.13'
+        uses: gitleaks/gitleaks-action@v2
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }

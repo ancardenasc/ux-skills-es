@@ -1,0 +1,14 @@
+{
+  "name": "ux-skills-es",
+  "owner": {
+    "name": "Nicolas Cardenas"
+  },
+  "description": "Skills de UX y accesibilidad en español, instalables por separado para Claude Code y GitHub Copilot.",
+  "plugins": [
+    {
+      "name": "hello-skill",
+      "source": "./plugins/hello-skill",
+      "description": "Skill de prueba de infraestructura (se elimina con el primer producto real)."
+    }
+  ]
+}

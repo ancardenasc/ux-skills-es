@@ -1,0 +1,26 @@
+# Fuente única del catálogo. El marketplace, los manifiestos de plugin y las tablas
+# del README se generan desde este archivo (scripts/build.py, scripts/gen_readme.py).
+repo: ancardenasc/ux-skills-es
+license: MIT
+author: { name: Nicolas Cardenas, url: https://github.com/ancardenasc }
+marketplace:
+  name: ux-skills-es
+  description: Skills de UX y accesibilidad en español, instalables por separado para Claude Code y GitHub Copilot.
+
+# Un plugin por skill. La versión vive solo aquí (se escribe en el manifiesto del plugin).
+plugins:
+  hello-skill:
+    version: 0.1.0
+    description: Skill de prueba de infraestructura (se elimina con el primer producto real).
+
+# type: skill. id = nombre de carpeta en src/skills/.
+# vendor: archivos de shared/ que se copian dentro de cada skill (references/_shared/) para que
+# el skill sea autocontenido. {lang} se expande con langs.
+assets:
+  - id: hello-skill
+    type: skill
+    plugin: hello-skill
+    description: Skill de prueba que verifica el vendoring y el cierre de enlaces.
+    description_en: Infrastructure test skill that verifies vendoring and link closure.
+    vendor:
+      - { src: "references/hello.{lang}.md", langs: [es, en] }
