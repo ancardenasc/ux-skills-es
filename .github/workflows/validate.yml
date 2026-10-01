@@ -20,6 +20,10 @@ jobs:
           git diff --exit-code
       - run: python scripts/lint.py
       - run: python -m pytest tests/unit -q
+      - name: Datos WCAG (estructura, sin red)
+        run: python scripts/check_wcag_data.py
+      - name: Informes de muestra válidos
+        run: python scripts/validate_report.py tests/fixtures/sample-report.es.md tests/fixtures/sample-report.en.md
       - name: Smoke test de instalación (incluye npx skills)
         run: python scripts/smoke_install.py
         env: { SMOKE_NPX: "1" }

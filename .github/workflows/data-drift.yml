@@ -1,0 +1,15 @@
+name: data-drift
+on:
+  schedule:
+    - cron: "0 13 * * 1"
+  workflow_dispatch:
+jobs:
+  wcag-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - run: pip install -r requirements.txt
+      - name: Comparar con los datos legibles por máquina de W3C y comprobar enlaces
+        run: python scripts/check_wcag_data.py --online --urls

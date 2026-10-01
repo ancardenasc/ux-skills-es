@@ -3,7 +3,8 @@
 Colección de skills de UX y accesibilidad en español, instalables por separado (Claude Code y GitHub Copilot).
 
 - Edita solo `src/`, `shared/`, `catalog.yml`, `docs/` y `scripts/`. `skills/`, `plugins/`, `.claude-plugin/` y las tablas de los README se generan.
-- Tras cualquier cambio: `.venv/bin/python scripts/build.py && .venv/bin/python scripts/gen_readme.py && .venv/bin/python scripts/lint.py && .venv/bin/python -m pytest tests/unit -q && .venv/bin/python scripts/smoke_install.py`.
+- Tras cualquier cambio: `.venv/bin/python scripts/build.py && .venv/bin/python scripts/gen_readme.py && .venv/bin/python scripts/lint.py && .venv/bin/python -m pytest tests/unit -q && .venv/bin/python scripts/smoke_install.py && .venv/bin/python scripts/check_wcag_data.py`.
+- Los datos de `shared/data/wcag22-criteria.json` se generan con `scripts/gen_wcag_data.py` (hechos de W3C + `wcag22-own-text.yml`, textos propios). Para validar un informe: `scripts/validate_report.py informe.md`.
 - Cada skill es autocontenido: nada de enlaces fuera de su carpeta ni symlinks. Lo compartido vive en `shared/` y se copia a `references/_shared/` por `build.py`.
 - Nombres en kebab-case en inglés, iguales al nombre de la carpeta. SKILL.md de menos de 500 líneas; el detalle va en `references/`.
 - Informes y textos para personas en español primero, con salida configurable a inglés.
