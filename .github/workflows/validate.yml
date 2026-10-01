@@ -23,7 +23,7 @@ jobs:
       - name: Datos WCAG (estructura, sin red)
         run: python scripts/check_wcag_data.py
       - name: Informes de muestra válidos
-        run: python scripts/validate_report.py src/skills/wcag22-audit/examples/sample-report.es.md src/skills/wcag22-audit/examples/sample-report.en.md
+        run: python scripts/validate_report.py src/skills/wcag22-audit/examples/sample-report.es.md src/skills/wcag22-audit/examples/sample-report.en.md src/skills/heuristic-review-es/examples/sample-report.es.md src/skills/heuristic-review-es/examples/sample-report.en.md
       - name: Smoke test de instalación (incluye npx skills)
         run: python scripts/smoke_install.py
         env: { SMOKE_NPX: "1" }

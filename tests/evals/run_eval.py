@@ -1,7 +1,7 @@
-"""Ejecuta wcag22-audit de verdad con `claude -p` sobre un fixture y compara con lo esperado.
+"""Ejecuta un skill de verdad con `claude -p` sobre un fixture y compara con lo esperado.
 
 Opt-in: usa tu sesión de Claude Code y consume cuota. No se ejecuta en el CI.
-Uso: python tests/evals/run_eval.py [fixture]   (por defecto html-seeded)
+Uso: python tests/evals/run_eval.py [skill] [fixture]   (por defecto wcag22-audit html-seeded)
 """
 import subprocess
 import sys
@@ -16,16 +16,18 @@ import yaml  # noqa: E402
 
 
 def main():
-    name = sys.argv[1] if len(sys.argv) > 1 else "html-seeded"
+    skill = sys.argv[1] if len(sys.argv) > 1 else "wcag22-audit"
+    name = sys.argv[2] if len(sys.argv) > 2 else "html-seeded"
     fixture = ROOT / "tests" / "fixtures" / name
-    plugin = ROOT / "plugins" / "wcag22-audit"
-    cmd = ["claude", "-p", "/wcag22-audit:wcag22-audit . --idioma es",
+    plugin = ROOT / "plugins" / skill
+    extra = ' --tarea "Hacer, guardar y, si hace falta, eliminar un pedido de café"' if skill == "heuristic-review-es" else ""
+    cmd = ["claude", "-p", f"/{skill}:{skill} . --idioma es{extra}",
            "--plugin-dir", str(plugin), "--add-dir", str(plugin),
            "--permission-mode", "acceptEdits",
            "--allowedTools", "Read Glob Grep Bash(git:*) Bash(ls:*) Bash(cat:*)",
            "--output-format", "text"]
     res = subprocess.run(cmd, cwd=fixture, capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=900)
-    out = Path(tempfile.gettempdir()) / f"eval-{name}.md"
+    out = Path(tempfile.gettempdir()) / f"eval-{skill}-{name}.md"
     out.write_text(res.stdout, encoding="utf-8")
     expected = yaml.safe_load((fixture / "expected.yml").read_text(encoding="utf-8"))
     r = compare.compare(res.stdout, expected)

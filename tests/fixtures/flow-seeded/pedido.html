@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Café Aurora – Tu pedido</title>
+</head>
+<body>
+  <nav>
+    <a href="/">Inicio</a> <a href="/pedido">Mi pedido</a> <a href="/cuenta">Cuenta</a>
+  </nav>
+  <h1>Tu pedido</h1>
+  <form id="pedido" action="/pedido" method="post">
+    <label for="fecha">Fecha de entrega (mm/dd/aaaa)</label>
+    <input id="fecha" name="fecha" placeholder="12/31/2026">
+    <button type="submit">Aceptar</button>
+    <button type="button" onclick="guardar()">Enviar</button>
+    <button type="button" onclick="borrarPedido()">Eliminar pedido</button>
+    <button type="button" class="ico" title="">⚙</button>
+  </form>
+  <p id="estado"></p>
+  <script>
+    function guardar() { fetch('/guardar', {method: 'POST'}); }
+    function borrarPedido() { fetch('/pedido', {method: 'DELETE'}).then(() => location.reload()); }
+    document.getElementById('pedido').addEventListener('error', () => {
+      document.getElementById('estado').textContent = 'Error 0x80070057: parámetro incorrecto';
+    });
+  </script>
+</body>
+</html>

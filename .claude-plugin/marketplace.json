@@ -9,6 +9,11 @@
       "name": "wcag22-audit",
       "source": "./plugins/wcag22-audit",
       "description": "Audita accesibilidad web contra WCAG 2.2 A y AA desde código, URL o diseño, con informe en español, evidencia y brechas honestas."
+    },
+    {
+      "name": "heuristic-review-es",
+      "source": "./plugins/heuristic-review-es",
+      "description": "Revisión heurística de usabilidad en español con las 10 heurísticas de Nielsen, con evidencia, verificación manual y brechas honestas."
     }
   ]
 }

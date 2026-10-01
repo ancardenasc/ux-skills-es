@@ -55,7 +55,7 @@ Recorre los criterios A y AA por principio (Perceptible, Operable, Comprensible,
 
 ### 5. Escribe el informe
 
-Usa la plantilla del idioma: siete secciones con sus marcadores `<!-- section:id -->`, el pie legal y, al final, un único bloque `json ux-skills-findings` que valida contra el esquema. El Markdown y el JSON deben decir lo mismo. La cobertura (evaluados / aplicables) se calcula contando los hallazgos; no la estimes. Describe cada criterio con palabras propias. **En el JSON, `criterion.name` es siempre el `name_en` exacto del archivo de datos** (p. ej. `Keyboard`); en el Markdown en español escribe `id name_en (label_es)`, por ejemplo `2.1.1 Keyboard (Teclado)`.
+Usa la plantilla del idioma: siete secciones con sus marcadores `<!-- section:id -->`, el pie legal y, al final, un único bloque `json ux-skills-findings` que valida contra el esquema. El Markdown y el JSON deben decir lo mismo. La cobertura (evaluados / aplicables) se calcula contando criterios distintos, cada uno una vez; no la estimes. Describe cada criterio con palabras propias. **En el JSON, `criterion.name` es siempre el `name_en` exacto del archivo de datos** (p. ej. `Keyboard`); en el Markdown en español escribe `id name_en (label_es)`, por ejemplo `2.1.1 Keyboard (Teclado)`.
 
 ### 6. Autoverificación antes de entregar
 

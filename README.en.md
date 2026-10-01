@@ -10,6 +10,7 @@ Spanish-first UX and accessibility skills for Claude Code and GitHub Copilot. Ea
 | Skill | What it does | Install |
 |---|---|---|
 | [`wcag22-audit`](src/skills/wcag22-audit/README.md) | Audits web accessibility against WCAG 2.2 A and AA from code, a URL or a design; Spanish-first report with evidence, manual checks and honest gaps. | `/plugin install wcag22-audit@ux-skills-es` |
+| [`heuristic-review-es`](src/skills/heuristic-review-es/README.md) | Usability heuristic review with Nielsen's 10 heuristics from code, a URL or a design; Spanish-first report with evidence and honest gaps. | `/plugin install heuristic-review-es@ux-skills-es` |
 <!-- catalog:end -->
 
 ## Status

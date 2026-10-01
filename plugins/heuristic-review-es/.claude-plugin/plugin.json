@@ -1,0 +1,10 @@
+{
+  "name": "heuristic-review-es",
+  "version": "0.1.0",
+  "description": "Revisión heurística de usabilidad en español con las 10 heurísticas de Nielsen, con evidencia, verificación manual y brechas honestas.",
+  "author": {
+    "name": "Nicolas Cardenas",
+    "url": "https://github.com/ancardenasc"
+  },
+  "license": "MIT"
+}

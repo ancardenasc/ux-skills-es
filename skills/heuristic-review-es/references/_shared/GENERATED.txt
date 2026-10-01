@@ -1,0 +1,15 @@
+Archivos copiados desde shared/ por scripts/build.py. No editar a mano.
+- references/_shared/honest-gaps.en.md
+- references/_shared/honest-gaps.es.md
+- references/_shared/input-modes.en.md
+- references/_shared/input-modes.es.md
+- references/_shared/labels.yml
+- references/_shared/legal-copyright-rules.md
+- references/_shared/nielsen-heuristics.json
+- references/_shared/report-format.en.md
+- references/_shared/report-format.es.md
+- references/_shared/report.en.md
+- references/_shared/report.es.md
+- references/_shared/report.schema.json
+- references/_shared/severity-and-confidence.en.md
+- references/_shared/severity-and-confidence.es.md

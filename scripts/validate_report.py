@@ -55,6 +55,7 @@ def validate_text(text):
         nielsen = {h["id"]: h for h in json.loads(NIELSEN.read_text(encoding="utf-8"))["heuristics"]}
 
     seen = set()
+    by_criterion = {}
     counts = {"pass": 0, "fail": 0, "manual": 0, "not_applicable": 0, "not_tested": 0}
     for f in data.get("findings", []):
         fid = f.get("id", "?")
@@ -63,6 +64,7 @@ def validate_text(text):
         seen.add(fid)
         counts[f.get("status")] = counts.get(f.get("status"), 0) + 1
         crit = f.get("criterion", {})
+        by_criterion.setdefault((crit.get("system"), crit.get("id")), set()).add(f.get("status"))
         if crit.get("system") == "WCAG22":
             ref = wcag.get(crit.get("id"))
             if not ref:
@@ -82,8 +84,9 @@ def validate_text(text):
         if f.get("severity") and f.get("status") != "fail":
             errors.append(f"{fid}: la gravedad solo se asigna a hallazgos fail")
 
-    assessed = counts["pass"] + counts["fail"]
-    applicable = assessed + counts["manual"] + counts["not_tested"]
+    # Cobertura por criterio distinto: un criterio con varios hallazgos cuenta una sola vez.
+    assessed = sum(1 for st in by_criterion.values() if st & {"pass", "fail"})
+    applicable = sum(1 for st in by_criterion.values() if st != {"not_applicable"})
     stats = {**counts, "assessed": assessed, "applicable": applicable,
              "coverage": round(assessed / applicable, 2) if applicable else None}
     declared = COVERAGE.search(text)

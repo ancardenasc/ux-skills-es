@@ -1,0 +1,140 @@
+{
+  "_comment": "Datos de las 10 heurísticas de usabilidad de Jakob Nielsen (Nielsen Norman Group). Solo nombre oficial y enlace; etiquetas y resúmenes propios, no traducciones.",
+  "source": {
+    "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+    "retrieved_on": "2026-10-01",
+    "attribution": "Usability heuristics © Jakob Nielsen / Nielsen Norman Group. Names cited with a link; no NN/g text is reproduced or translated."
+  },
+  "heuristics": [
+    {
+      "id": "H1",
+      "name_en": "Visibility of System Status",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Visibilidad del estado del sistema",
+      "summary_es": "El sistema informa a la persona qué está pasando, con respuestas visibles y a tiempo ante cada acción.",
+      "summary_en": "The system keeps people informed about what is happening, with timely visible feedback for every action.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "H2",
+      "name_en": "Match Between the System and the Real World",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Correspondencia con el mundo real",
+      "summary_es": "El producto habla el lenguaje de quienes lo usan, con palabras, conceptos y orden que les resultan familiares y no internos.",
+      "summary_en": "The product speaks the users' language, with familiar words, concepts and order rather than internal jargon.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "H3",
+      "name_en": "User Control and Freedom",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Control y libertad del usuario",
+      "summary_es": "Quien se equivoca o cambia de idea puede salir, cancelar o deshacer sin recorrer pasos largos.",
+      "summary_en": "People who err or change their mind can exit, cancel or undo without long detours.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "H4",
+      "name_en": "Consistency and Standards",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Consistencia y estándares",
+      "summary_es": "Lo que se parece funciona igual y se llama igual, dentro del producto y respecto a las convenciones de la plataforma.",
+      "summary_en": "Similar things look, work and are named the same way, within the product and with platform conventions.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "H5",
+      "name_en": "Error Prevention",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Prevención de errores",
+      "summary_es": "El diseño evita que ocurran los errores: restringe la entrada, confirma lo riesgoso y ofrece valores por defecto sensatos.",
+      "summary_en": "The design prevents errors from happening: it constrains input, confirms risky actions and offers sensible defaults.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "H6",
+      "name_en": "Recognition Rather than Recall",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Reconocer en lugar de recordar",
+      "summary_es": "Las opciones, acciones e información están visibles o a mano, de modo que nadie tenga que recordarlas entre pasos.",
+      "summary_en": "Options, actions and information are visible or easy to retrieve, so nobody has to remember them between steps.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "H7",
+      "name_en": "Flexibility and Efficiency of Use",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Flexibilidad y eficiencia de uso",
+      "summary_es": "Hay atajos y personalización para quien ya domina el producto, sin estorbar a quien empieza.",
+      "summary_en": "Shortcuts and customization serve experienced people without getting in the way of beginners.",
+      "assessable": {
+        "code": "partial",
+        "url": "partial",
+        "design": "partial"
+      }
+    },
+    {
+      "id": "H8",
+      "name_en": "Aesthetic and Minimalist Design",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Diseño estético y minimalista",
+      "summary_es": "Cada elemento aporta algo; la información irrelevante o poco necesaria compite con la importante y debe quitarse.",
+      "summary_en": "Every element earns its place; irrelevant or rarely needed information competes with what matters and should be removed.",
+      "assessable": {
+        "code": "no",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "H9",
+      "name_en": "Help Users Recognize, Diagnose, and Recover from Errors",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Reconocer, diagnosticar y recuperarse de errores",
+      "summary_es": "Los mensajes de error usan lenguaje claro, indican el problema con precisión y proponen una solución.",
+      "summary_en": "Error messages use plain language, state the problem precisely and suggest a solution.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "yes"
+      }
+    },
+    {
+      "id": "H10",
+      "name_en": "Help and Documentation",
+      "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+      "label_es": "Ayuda y documentación",
+      "summary_es": "Si hace falta ayuda, es fácil de encontrar, se centra en la tarea y es breve y concreta.",
+      "summary_en": "When help is needed it is easy to find, task-focused, short and concrete.",
+      "assessable": {
+        "code": "partial",
+        "url": "yes",
+        "design": "partial"
+      }
+    }
+  ]
+}

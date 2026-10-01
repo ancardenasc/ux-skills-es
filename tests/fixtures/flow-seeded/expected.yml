@@ -1,0 +1,19 @@
+# Resultado esperado de heuristic-review-es sobre este flujo ficticio en modo código.
+# Una revisión heurística exige juicio: el golden solo fija lo claramente sembrado.
+fixture: flow-seeded
+mode: code
+must_find:
+  - { criterion: "H1", file: pedido.html, line: 22, status: fail }    # guardar() no da ninguna respuesta
+  - { criterion: "H2", file: pedido.html, line: 13, status: fail }    # fecha en formato mm/dd para un público local
+  - { criterion: "H4", file: pedido.html, line: 15, status: fail }    # Aceptar / Enviar para acciones equivalentes
+  - { criterion: "H5", file: pedido.html, line: 17, status: fail }    # eliminar sin confirmación
+  - { criterion: "H6", file: pedido.html, line: 18, status: fail }    # icono sin etiqueta ni ayuda
+  - { criterion: "H9", file: pedido.html, line: 25, status: fail, tolerance: 1 }    # mensaje técnico sin solución (el manejador está en la línea 24)
+may_find:                 # extras razonables: se aceptan si aparecen, no se exigen (hallazgos por ausencia o de juicio)
+  - { criterion: "H10", file: pedido.html, line: 9, status: fail }   # no hay enlace de ayuda
+  - { criterion: "H5", file: pedido.html, line: 14, status: fail }    # el campo de fecha no restringe el formato (visto en la primera ejecución real)
+must_be_manual:
+  - { criterion: "H7" }                                               # requiere observar uso real
+must_not_flag:                                                        # código correcto a propósito
+  - { criterion: "H4", file: pedido.html, line: 9 }                   # etiquetas de navegación consistentes
+  - { criterion: "H8", file: pedido.html, line: 11 }                  # una sola tarea por pantalla

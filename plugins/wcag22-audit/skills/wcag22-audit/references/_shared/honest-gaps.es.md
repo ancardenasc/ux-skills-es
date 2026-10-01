@@ -11,7 +11,7 @@ La sección es **obligatoria y nunca queda vacía**. Dice con claridad qué no s
 
 ## Cobertura
 
-`cobertura = criterios evaluados / criterios aplicables`. Se calcula contando los hallazgos del JSON (`pass` y `fail` son evaluados; `manual` y `not_tested` no; `not_applicable` sale del denominador). No la estimes ni la redondees hacia arriba.
+`cobertura = criterios evaluados / criterios aplicables`, contando **cada criterio una sola vez** aunque tenga varios hallazgos. Un criterio está evaluado si tiene al menos un `pass` o un `fail`; `manual` y `not_tested` no cuentan como evaluados; un criterio que solo tiene `not_applicable` sale del denominador. Se calcula desde el JSON; no la estimes ni la redondees hacia arriba.
 
 ## Tono
 

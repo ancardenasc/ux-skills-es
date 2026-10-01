@@ -2,7 +2,7 @@
 
 Uso: python tests/evals/compare.py informe.md tests/fixtures/html-seeded
 Sale con 1 si el informe no valida, si falla algún must_find, si marca un señuelo o si un criterio manual no es manual.
-Los fallos extra se listan para revisión humana: pueden ser legítimos (así se completó el golden la primera vez).
+Los fallos extra (fuera de must_find y may_find) se listan para revisión humana: pueden ser legítimos (así se completó el golden la primera vez).
 """
 import json
 import sys
@@ -20,6 +20,18 @@ def where(f):
     return {(e.get("file"), e.get("line")) for e in f.get("evidence", [])}
 
 
+def near(f, item):
+    """¿Alguna evidencia del hallazgo (línea o rango line..end_line) cubre la línea esperada, con su tolerancia?"""
+    tol = item.get("tolerance", 0)
+    for e in f.get("evidence", []):
+        start = e.get("line")
+        if e.get("file") == item["file"] and start is not None:
+            end = e.get("end_line") or start
+            if start - tol <= item["line"] <= end + tol:
+                return True
+    return False
+
+
 def compare(text, expected):
     errors, stats = validate_report.validate_text(text)
     result = {"valid": not errors, "validation_errors": errors, "stats": stats,
@@ -29,21 +41,20 @@ def compare(text, expected):
     findings = json.loads(validate_report.BLOCK.search(text).group(1))["findings"]
     for w in expected["must_find"]:
         if not [f for f in findings if f["criterion"]["id"] == w["criterion"] and f["status"] == w["status"]
-                and (w["file"], w["line"]) in where(f)]:
+                and near(f, w)]:
             result["missed"].append(w)
     for d in expected["must_not_flag"]:
-        if [f for f in findings if f["status"] == "fail" and f["criterion"]["id"] == d["criterion"]
-                and (d["file"], d["line"]) in where(f)]:
+        if [f for f in findings if f["status"] == "fail" and f["criterion"]["id"] == d["criterion"] and near(f, d)]:
             result["decoys_flagged"].append(d)
     for m in expected["must_be_manual"]:
         statuses = {f["status"] for f in findings if f["criterion"]["id"] == m["criterion"]}
         if statuses != {"manual"}:
             result["manual_wrong"].append({"criterion": m["criterion"], "statuses": sorted(statuses)})
-    seeded = {(w["criterion"], w["file"], w["line"]) for w in expected["must_find"] if w["status"] == "fail"}
+    allowed = [w for w in expected["must_find"] + expected.get("may_find", []) if w["status"] == "fail"]
     for f in findings:
         if f["status"] == "fail":
             e = f["evidence"][0]
-            if (f["criterion"]["id"], e.get("file"), e.get("line")) not in seeded:
+            if not any(w["criterion"] == f["criterion"]["id"] and near(f, w) for w in allowed):
                 result["extra_fails"].append(f"{f['id']} {f['criterion']['name']} {e.get('file')}:{e.get('line')}")
     total = len(expected["must_find"])
     result["recall"] = round((total - len(result["missed"])) / total, 2)

@@ -11,7 +11,7 @@ The section is **mandatory and never empty**. It states plainly what could not b
 
 ## Coverage
 
-`coverage = assessed criteria / applicable criteria`. Compute it by counting the findings in the JSON (`pass` and `fail` are assessed; `manual` and `not_tested` are not; `not_applicable` leaves the denominator). Do not estimate it or round it up.
+`coverage = assessed criteria / applicable criteria`, counting **each criterion once** even if it has several findings. A criterion is assessed if it has at least one `pass` or `fail`; `manual` and `not_tested` do not count as assessed; a criterion with only `not_applicable` leaves the denominator. Compute it from the JSON; do not estimate it or round it up.
 
 ## Tone
 
