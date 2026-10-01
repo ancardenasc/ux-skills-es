@@ -108,12 +108,14 @@ def main():
 
         if os.environ.get("SMOKE_NPX") == "1":
             res = subprocess.run(["npx", "-y", "skills", "add", str(ROOT), "--list"],
-                                 capture_output=True, text=True, timeout=240)
-            output = res.stdout + res.stderr
+                                 capture_output=True, text=True, timeout=240,
+                                 stdin=subprocess.DEVNULL, env={**os.environ, "CI": "1"})
+            output = re.sub(r"\x1b\[[0-9;?]*[a-zA-Z]", "", res.stdout + res.stderr)
             for i in ids:
                 n = len(re.findall(rf"(?<![\w-]){re.escape(i)}(?![\w-])", output))
                 if n != 1:
-                    err(f"npx skills --list: {i} aparece {n} veces (esperado 1)")
+                    err(f"npx skills --list: {i} aparece {n} veces (esperado 1). "
+                        f"Salida (código {res.returncode}):\n{output[-1500:]}")
 
     print(f"{len(ids)} skill(s) verificados por cada ruta")
     for e in errors:
