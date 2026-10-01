@@ -26,7 +26,7 @@ jobs:
         run: python scripts/validate_report.py src/skills/wcag22-audit/examples/sample-report.es.md src/skills/wcag22-audit/examples/sample-report.en.md src/skills/heuristic-review-es/examples/sample-report.es.md src/skills/heuristic-review-es/examples/sample-report.en.md
       - name: Smoke test de instalación (incluye npx skills)
         run: python scripts/smoke_install.py
-        env: { SMOKE_NPX: "1" }
+        env: { SMOKE_NPX: "1", SMOKE_GH: "1" }
       - name: Escaneo de secretos
         if: matrix.python == '3.13'
         uses: gitleaks/gitleaks-action@v2

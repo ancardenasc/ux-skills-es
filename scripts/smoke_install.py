@@ -1,7 +1,7 @@
 """Instala en carpetas temporales por cada ruta y verifica el resultado.
 
 Rutas: carpeta de skill suelta, zip de un skill, caché de plugin, install.sh (claude y copilot) y,
-con SMOKE_NPX=1, `npx skills add <repo> --list` (cada skill debe aparecer una sola vez).
+con SMOKE_NPX=1, `npx skills add <repo> --list` y, con SMOKE_GH=1, `gh skill install --from-local` (cada skill debe aparecer una sola vez).
 """
 import json
 import os
@@ -54,11 +54,13 @@ def check_skill_dir(skill_dir, label):
 
 def main():
     cat = load_catalog()
-    ids = [a["id"] for a in cat.get("assets") or []]
+    assets = cat.get("assets") or []
+    ids = [a["id"] for a in assets]
+    plugin_of = {a["id"]: a["plugin"] for a in assets}
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         for i in ids:
-            src = ROOT / "skills" / i
+            src = ROOT / "plugins" / plugin_of[i] / "skills" / i
             lone = tmp / "lone" / i
             shutil.copytree(src, lone)
             check_skill_dir(lone, f"carpeta suelta {i}")
@@ -117,6 +119,16 @@ def main():
                 if n != 1:
                     err(f"npx skills --list: {i} aparece {n} veces (esperado 1). "
                         f"Salida (código {res.returncode}):\n{output[-1500:]}")
+
+        if os.environ.get("SMOKE_GH") == "1" and shutil.which("gh") \
+                and subprocess.run(["gh", "skill", "--help"], capture_output=True).returncode == 0:
+            res = subprocess.run(["gh", "skill", "install", "--from-local", str(ROOT)], capture_output=True,
+                                 text=True, timeout=240, stdin=subprocess.DEVNULL)
+            listed = [ln.split("\t")[0] for ln in res.stdout.splitlines()
+                      if "\t" in ln and not ln.startswith("[plugins]")]
+            for i in ids:
+                if listed.count(i) != 1:
+                    err(f"gh skill install --from-local: {i} aparece {listed.count(i)} veces (esperado 1)")
 
     print(f"{len(ids)} skill(s) verificados por cada ruta")
     for e in errors:

@@ -8,6 +8,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import lint  # noqa: E402
 
+PLUG = ROOT / "plugins"
+
 
 def run(script):
     return subprocess.run([sys.executable, str(ROOT / "scripts" / script)], capture_output=True, text=True)
@@ -23,33 +25,33 @@ def tree_hash(path):
 
 def test_build_is_idempotent():
     assert run("build.py").returncode == 0
-    first = (tree_hash(ROOT / "skills"), tree_hash(ROOT / "plugins"))
+    first = tree_hash(ROOT / "plugins")
     assert run("build.py").returncode == 0
-    assert first == (tree_hash(ROOT / "skills"), tree_hash(ROOT / "plugins"))
+    assert first == tree_hash(ROOT / "plugins")
 
 
 def test_vendored_markdown_matches_shared_plus_header():
     run("build.py")
-    vendored = (ROOT / "skills/wcag22-audit/references/_shared/report.es.md").read_text()
+    vendored = (PLUG / "wcag22-audit/skills/wcag22-audit/references/_shared/report.es.md").read_text()
     original = (ROOT / "shared/templates/report.es.md").read_text()
     assert vendored.startswith("<!-- GENERADO") and vendored.endswith(original)
 
 
 def test_vendored_json_is_a_byte_copy():
     run("build.py")
-    vendored = ROOT / "skills/wcag22-audit/references/_shared/wcag22-criteria.json"
+    vendored = PLUG / "wcag22-audit/skills/wcag22-audit/references/_shared/wcag22-criteria.json"
     assert vendored.read_bytes() == (ROOT / "shared/data/wcag22-criteria.json").read_bytes()
 
 
-def test_plugin_copy_is_identical_to_flat_skill():
+def test_there_is_no_flat_skills_copy():
     run("build.py")
-    assert tree_hash(ROOT / "skills/wcag22-audit") == tree_hash(ROOT / "plugins/wcag22-audit/skills/wcag22-audit")
+    assert not (ROOT / "skills").exists()
 
 
 def test_readme_not_shipped_with_skill():
     run("build.py")
-    assert not (ROOT / "skills/wcag22-audit/README.md").exists()
-    assert (ROOT / "skills/wcag22-audit/examples/sample-report.es.md").exists()
+    assert not (PLUG / "wcag22-audit/skills/wcag22-audit/README.md").exists()
+    assert (PLUG / "wcag22-audit/skills/wcag22-audit/examples/sample-report.es.md").exists()
 
 
 def test_forbidden_terms_regex():
@@ -66,13 +68,13 @@ def test_lint_passes_on_clean_repo():
 
 def test_only_the_skill_root_readme_is_omitted():
     run("build.py")
-    assert not (ROOT / "skills/heuristic-review-es/README.md").exists()
+    assert not (PLUG / "heuristic-review-es/skills/heuristic-review-es/README.md").exists()
     nested = ROOT / "src/skills/heuristic-review-es/references/_probe/README.md"
     nested.parent.mkdir(exist_ok=True)
     nested.write_text("# probe\n")
     try:
         run("build.py")
-        assert (ROOT / "skills/heuristic-review-es/references/_probe/README.md").exists()
+        assert (PLUG / "heuristic-review-es/skills/heuristic-review-es/references/_probe/README.md").exists()
     finally:
         nested.unlink()
         nested.parent.rmdir()

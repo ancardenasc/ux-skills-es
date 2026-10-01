@@ -1,9 +1,10 @@
 """Genera las salidas por herramienta desde src/, shared/ y catalog.yml.
 
-src/skills/<id>/            -> skills/<id>/            (carpeta plana autocontenida: npx skills, gh skill, zip, Copilot)
-shared/<src> (vendor)       -> skills/<id>/references/_shared/<archivo>   (copia, nunca symlink)
-skills/<id>/                -> plugins/<plugin>/skills/<id>/              (mismos bytes, para el caché de Claude Code)
+src/skills/<id>/            -> plugins/<plugin>/skills/<id>/   (autocontenido; lo leen Claude Code, npx skills, gh skill y el zip)
+shared/<src> (vendor)       -> plugins/<plugin>/skills/<id>/references/_shared/<archivo>   (copia, nunca symlink)
 catalog.yml                 -> plugins/<plugin>/.claude-plugin/plugin.json y .claude-plugin/marketplace.json
+
+No hay una copia plana en skills/: duplicaba cada skill ante `gh skill` (lo descubría por skills/ y por plugins/).
 
 README.md y CHANGELOG.md de la raíz de cada skill son para humanos y no se incluyen en la salida (los de subcarpetas, como template/, sí).
 La versión va solo en el manifiesto del plugin, no en la entrada del marketplace.
@@ -72,18 +73,21 @@ def vendor(asset, skill_dir):
 
 def main():
     cat = load_catalog()
-    for d in (ROOT / "skills", ROOT / "plugins"):
+    for d in (ROOT / "plugins",):
         reset(d)
+    legacy = ROOT / "skills"
+    if legacy.exists():
+        shutil.rmtree(legacy)
 
     by_plugin = {}
     for asset in cat.get("assets") or []:
         if asset["type"] != "skill":
             raise SystemExit(f"tipo no soportado {asset['type']!r} en {asset['id']}")
         by_plugin.setdefault(asset["plugin"], []).append(asset)
-        src = ROOT / "src" / "skills" / asset["id"]
-        out = ROOT / "skills" / asset["id"]
-        shutil.copytree(src, out, ignore=make_ignore(src))
-        vendor(asset, out)
+
+    unknown = set(by_plugin) - set(cat["plugins"])
+    if unknown:
+        raise SystemExit(f"assets con plugin no declarado: {sorted(unknown)}")
 
     for name, meta in cat["plugins"].items():
         assets = by_plugin.get(name)
@@ -91,7 +95,10 @@ def main():
             raise SystemExit(f"el plugin {name} no tiene assets en el catálogo")
         plugin_dir = ROOT / "plugins" / name
         for asset in assets:
-            shutil.copytree(ROOT / "skills" / asset["id"], plugin_dir / "skills" / asset["id"])
+            src = ROOT / "src" / "skills" / asset["id"]
+            out = plugin_dir / "skills" / asset["id"]
+            shutil.copytree(src, out, ignore=make_ignore(src))
+            vendor(asset, out)
         manifest = plugin_dir / ".claude-plugin"
         manifest.mkdir(parents=True)
         (manifest / "plugin.json").write_text(json.dumps({
@@ -101,10 +108,6 @@ def main():
             "author": {"name": cat["author"]["name"], "url": cat["author"]["url"]},
             "license": cat["license"],
         }, indent=2, ensure_ascii=False) + "\n")
-
-    unknown = set(by_plugin) - set(cat["plugins"])
-    if unknown:
-        raise SystemExit(f"assets con plugin no declarado: {sorted(unknown)}")
 
     (ROOT / ".claude-plugin").mkdir(exist_ok=True)
     (ROOT / ".claude-plugin" / "marketplace.json").write_text(json.dumps({

@@ -42,7 +42,7 @@ Antes de escribir te muestra una **tabla de huecos** (qué evidencia hay y cuál
 | Claude Code (plugin) | `/plugin marketplace add ancardenasc/ux-skills-es` y luego `/plugin install case-study-writer@ux-skills-es` |
 | `npx skills` | `npx skills add ancardenasc/ux-skills-es --skill case-study-writer` |
 | GitHub CLI | `gh skill install ancardenasc/ux-skills-es case-study-writer` |
-| GitHub Copilot | copia la carpeta `skills/case-study-writer` a `.github/skills/` de tu proyecto |
+| GitHub Copilot | copia la carpeta `plugins/case-study-writer/skills/case-study-writer` a `.github/skills/` de tu proyecto |
 | claude.ai | sube el zip `case-study-writer.zip` de la página de Releases |
 
 ## Cómo se evalúa a sí mismo

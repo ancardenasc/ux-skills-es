@@ -46,5 +46,5 @@ Es un skill de **invocación manual**: el modelo no lo activa por su cuenta. No 
 | Claude Code (plugin) | `/plugin marketplace add ancardenasc/ux-skills-es` y luego `/plugin install case-kit@ux-skills-es` |
 | `npx skills` | `npx skills add ancardenasc/ux-skills-es --skill case-kit` |
 | GitHub CLI | `gh skill install ancardenasc/ux-skills-es case-kit` |
-| GitHub Copilot | copia la carpeta `skills/case-kit` a `.github/skills/` de tu proyecto |
+| GitHub Copilot | copia la carpeta `plugins/case-kit/skills/case-kit` a `.github/skills/` de tu proyecto |
 | claude.ai | sube el zip `case-kit.zip` de la página de Releases |

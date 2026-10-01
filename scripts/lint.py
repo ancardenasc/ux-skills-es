@@ -87,12 +87,14 @@ def main():
                     err(f"{i}: vendor apunta a shared/{src}, que no existe")
 
     ids = {a["id"] for a in cat.get("assets") or []}
-    for kind in ("skills",):
-        base = ROOT / kind
-        if base.exists():
-            for d in base.iterdir():
-                if d.is_dir() and d.name not in ids:
-                    err(f"{kind}/{d.name}: carpeta generada que no está en el catálogo")
+    if (ROOT / "skills").exists():
+        err("skills/: ya no existe la copia plana; cada skill vive en plugins/<id>/skills/<id> (duplicaba el skill ante gh skill)")
+    for plugin_dir in sorted((ROOT / "plugins").glob("*")):
+        if plugin_dir.name not in cat["plugins"]:
+            err(f"plugins/{plugin_dir.name}: carpeta generada que no está en el catálogo")
+        for d in (plugin_dir / "skills").glob("*"):
+            if d.is_dir() and d.name not in ids:
+                err(f"plugins/{plugin_dir.name}/skills/{d.name}: skill generado que no está en el catálogo")
 
     for path in walk():
         rel = os.path.relpath(path, ROOT).replace(os.sep, "/")
@@ -109,12 +111,9 @@ def main():
         except UnicodeDecodeError:
             pass
 
-    for skill_dir in sorted((ROOT / "skills").glob("*")):
+    for skill_dir in sorted((ROOT / "plugins").glob("*/skills/*")):
         for md in skill_dir.rglob("*.md"):
             check_links(md, skill_dir)
-    for plugin_dir in sorted((ROOT / "plugins").glob("*")):
-        for md in plugin_dir.rglob("*.md"):
-            check_links(md, plugin_dir)
     docs = [ROOT / n for n in ("README.md", "README.en.md", "CONTRIBUTING.md", "AGENTS.md")]
     docs += (ROOT / "docs").rglob("*.md")
     for md in docs:

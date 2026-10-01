@@ -30,7 +30,7 @@ Con `--idioma en` (o `output_language: en` en `.ux-skills.yml`) el informe sale 
 | Claude Code (plugin) | `/plugin marketplace add ancardenasc/ux-skills-es` y luego `/plugin install wcag22-audit@ux-skills-es` |
 | `npx skills` | `npx skills add ancardenasc/ux-skills-es --skill wcag22-audit` |
 | GitHub CLI | `gh skill install ancardenasc/ux-skills-es wcag22-audit` |
-| GitHub Copilot | copia la carpeta `skills/wcag22-audit` a `.github/skills/` de tu proyecto |
+| GitHub Copilot | copia la carpeta `plugins/wcag22-audit/skills/wcag22-audit` a `.github/skills/` de tu proyecto |
 | claude.ai | sube el zip `wcag22-audit.zip` de la página de Releases |
 
 ## Qué no hace

@@ -29,7 +29,7 @@ Conviene decirle la tarea que hace la persona (`--tarea "..."`); sin tarea, el s
 | Claude Code (plugin) | `/plugin marketplace add ancardenasc/ux-skills-es` y luego `/plugin install heuristic-review-es@ux-skills-es` |
 | `npx skills` | `npx skills add ancardenasc/ux-skills-es --skill heuristic-review-es` |
 | GitHub CLI | `gh skill install ancardenasc/ux-skills-es heuristic-review-es` |
-| GitHub Copilot | copia la carpeta `skills/heuristic-review-es` a `.github/skills/` de tu proyecto |
+| GitHub Copilot | copia la carpeta `plugins/heuristic-review-es/skills/heuristic-review-es` a `.github/skills/` de tu proyecto |
 | claude.ai | sube el zip `heuristic-review-es.zip` de la página de Releases |
 
 ## Qué no hace
