@@ -170,3 +170,13 @@ def test_checker_detects_a_filled_missing_result():
     cleaned = text.replace("[DATO FALTANTE", "[Dato")
     r = check_case_study.check(cleaned, CS_FIXTURE, CS_EXPECTED, "es")
     assert r["missing_placeholders"]
+
+
+@pytest.mark.parametrize("readme,lang", [("README.md", "es"), ("README.en.md", "en")])
+def test_readme_excerpt_matches_the_real_sample_report(readme, lang):
+    """El extracto citado en el README debe existir tal cual en el informe de muestra."""
+    sample = sample_path("wcag22-audit", lang).read_text(encoding="utf-8")
+    quoted = [ln[2:] for ln in (ROOT / readme).read_text(encoding="utf-8").splitlines() if ln.startswith("> ") and ln[2:].strip()]
+    assert len(quoted) >= 4
+    for ln in quoted:
+        assert ln.strip() in sample, f"{readme}: la línea citada no está en el informe de muestra: {ln!r}"

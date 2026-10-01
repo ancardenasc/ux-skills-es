@@ -1,0 +1,43 @@
+name: release
+# Se dispara al subir una etiqueta <plugin>--vX.Y.Z (por ejemplo wcag22-audit--v0.1.0).
+on:
+  push:
+    tags: ["*--v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - run: pip install -r requirements.txt
+      - name: Leer la etiqueta
+        id: tag
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import os, sys
+          sys.path.insert(0, "scripts")
+          from release_check import parse_tag
+          parsed = parse_tag(os.environ["GITHUB_REF_NAME"])
+          if not parsed:
+              raise SystemExit("la etiqueta debe ser <plugin>--vX.Y.Z")
+          print(f"plugin={parsed[0]}\nversion={parsed[1]}")
+          PY
+      - name: La versión coincide con el catálogo
+        run: python scripts/release_check.py "${{ steps.tag.outputs.plugin }}" "${{ steps.tag.outputs.version }}"
+      - name: Salida generada al día, linter y pruebas
+        run: |
+          python scripts/build.py
+          python scripts/gen_readme.py
+          git diff --exit-code
+          python scripts/lint.py
+          python -m pytest tests/unit -q
+      - name: Crear el zip del skill
+        run: python scripts/make_zips.py --only "${{ steps.tag.outputs.plugin }}"
+      - name: Publicar la Release con el zip
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          gh release create "$GITHUB_REF_NAME" "dist/zips/${{ steps.tag.outputs.plugin }}.zip" \
+            --title "${{ steps.tag.outputs.plugin }} ${{ steps.tag.outputs.version }}" --generate-notes

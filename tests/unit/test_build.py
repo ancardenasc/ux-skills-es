@@ -95,3 +95,28 @@ def test_npx_listing_count_ignores_mentions_in_descriptions():
     import re
     output = "│    case-study-writer\n│\n│      Usa la estructura de case-kit para redactar.\n│\n│    case-kit\n│\n│      Crea carpetas.\n"
     assert len(re.findall(r"(?m)^[│\s]+case-kit\s*$", output)) == 1
+
+
+def test_release_tag_parsing_and_version_check():
+    import release_check
+    assert release_check.parse_tag("wcag22-audit--v0.1.0") == ("wcag22-audit", "0.1.0")
+    for bad in ("v0.1.0", "wcag22-audit-v0.1.0", "wcag22-audit--v1.0", "Wcag--v1.0.0"):
+        assert release_check.parse_tag(bad) is None, bad
+    assert release_check.check("wcag22-audit", "0.1.0") == []
+    assert release_check.check("wcag22-audit", "9.9.9")
+    assert release_check.check("no-existe", "0.1.0")
+
+
+def test_zips_are_deterministic_and_self_contained():
+    import hashlib
+    import zipfile
+    import make_zips
+    run("build.py")
+    skill = ROOT / "plugins/case-kit/skills/case-kit"
+    out = ROOT / "dist/zips/_test.zip"
+    first = hashlib.sha256(make_zips.build_zip(skill, "case-kit", out).read_bytes()).hexdigest()
+    second = hashlib.sha256(make_zips.build_zip(skill, "case-kit", out).read_bytes()).hexdigest()
+    names = zipfile.ZipFile(out).namelist()
+    out.unlink()
+    assert first == second
+    assert "case-kit/SKILL.md" in names and any(n.endswith("template/es/.gitignore") for n in names)

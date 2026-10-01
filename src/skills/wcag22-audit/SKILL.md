@@ -12,6 +12,7 @@ Audita accesibilidad web contra **WCAG 2.2, niveles A y AA** (55 criterios) y en
 ## Antes de empezar
 
 - **Idioma del informe:** `--idioma es|en` en la petición, o `output_language` en `.ux-skills.yml` de la raíz del proyecto, o el idioma de la petición; por defecto `es`.
+- **Configuración opcional** (`.ux-skills.yml`): `output_language`, `default_branch` (rama base para el diff, por defecto `main`) y `frontend_globs` (qué archivos cuentan como frontend).
 - **Archivos de apoyo** (junto a este archivo, ya copiados en `references/_shared/`):
   - Datos de los 55 criterios: [`wcag22-criteria.json`](references/_shared/wcag22-criteria.json). Cada criterio trae id, nombre, nivel, enlace y qué tanto se puede evaluar en cada modo (`assessable`).
   - Formato del informe: [es](references/_shared/report-format.es.md) · [en](references/_shared/report-format.en.md). Plantilla: [es](references/_shared/report.es.md) · [en](references/_shared/report.en.md). Etiquetas: [`labels.yml`](references/_shared/labels.yml). Esquema del bloque JSON: [`report.schema.json`](references/_shared/report.schema.json).
